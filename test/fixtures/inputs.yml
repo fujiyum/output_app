@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title_id: 1
+  input: MyString
+  terget: MyString
+
+two:
+  title_id: 1
+  input: MyString
+  terget: MyString
