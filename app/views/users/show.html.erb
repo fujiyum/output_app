@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attachment_image_tag @user, :profile_image, fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %>
+            <h5><%= @user.name %></h5>
+            <% if @user.id == current_user.id %>
+            <%= link_to "プロフィール編集", edit_user_path(@user) %>
+            <% end %>
+        </div>
+        <div class="col">
+            <% @titles.each do |title| %>
+            <%= attachment_image_tag title_image, :image %>
+            <% end %>
+        </div>
+    </div>
+</div>
