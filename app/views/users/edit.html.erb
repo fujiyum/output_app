@@ -1,2 +1,12 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= from_with model:@user, local:true do |f| %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+            <%= f.attachment_field :profile_image, placeholder:"プロフィール画像" %>
+            <%= f.text_field :name, autofocus:true, id:"inputName", placeholder:"ユーザーネーム" %>
+            <%= f.submit "変更を保存" %>
+            <% end %>
+        </div>
+    </div>
+</div>
