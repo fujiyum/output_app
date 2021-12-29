@@ -1,10 +1,26 @@
 class TitlesController < ApplicationController
   def new
+    @title = Title.new
   end
 
   def create
+    @title = Title.new(title_params)
+    @title.user_id = current_user.id
+    @title.save
+    redirect_to
+  end
+
+  def show
+    @title = Title.find(params[:id])
   end
 
   def index
   end
+
+  private
+
+  def title_params
+    params.require(:title).permit(:user_id, :title, :imaga_id)
+  end
+
 end

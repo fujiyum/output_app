@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attachment_image_tag @title, :image, fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %>
+            <h5><%= @title.title %></h5>
+            <%= link_to "インプットを登録する", %>
+            <%= link_to "メモを登録する", %>
+            <% end %>
+        </div>
+    </div>
+</div>
