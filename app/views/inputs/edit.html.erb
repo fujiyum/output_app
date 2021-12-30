@@ -1,2 +1,16 @@
-<h1>Inputs#edit</h1>
-<p>Find me in app/views/inputs/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
+            <%= @title.title %>
+            <%= attacment_image_tag @user, :image, fill, 60, 60, format:'jpeg' %>
+            <%= @user.name %>
+        </div>
+        <div class="col">
+            <%= from_with model:@input, local: true do |f| %>
+            <%= f.text_field :input %>
+            <%= f.text_field :target %>
+            <%= submit "更新する" %>
+        </div>
+    </div>
+</div>

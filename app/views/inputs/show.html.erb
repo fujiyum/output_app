@@ -1,2 +1,16 @@
-<h1>Inputs#show</h1>
-<p>Find me in app/views/inputs/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
+            <%= @title.title %>
+            <%= attacment_image_tag @user, :image, fill, 60, 60, format:'jpeg' %>
+            <%= @user.name %>
+        </div>
+        <div class="col">
+            <%= @input.input %>
+            <%= @input.target %>
+            <%= link_to "インプットの編集", input_edit_path(@input.id) %>
+            
+        </div>
+    </div>
+</div>
