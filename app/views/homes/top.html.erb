@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col">
             <% @titles.each do |title| %>
-            <%= attachment_image_tag title_image, :image %>
-            <%= attachment_image_tag title.user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+            <%= attachment_image_tag title, :image, :fill, 10, 10 %>
+            <%= attachment_image_tag title.user, :profile_image, :fill, 10, 10, fallback:"no_image.jpg" %>
             <%= title.user.name %>
             <% end %>
         </div>

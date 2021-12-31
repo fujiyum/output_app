@@ -1,2 +1,15 @@
-<h1>Notes#new</h1>
-<p>Find me in app/views/notes/new.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
+            <%= @title.title %>
+        </div>
+        <div class="col">
+            <% from_with model: @note, local:true do |f| %>
+            <%= f.text_field :note %>
+            <%= f.submit '登録する' %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
