@@ -7,11 +7,12 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.save
-    redirect_to notes_path
+    redirect_to notes_path(title_id: @note.title_id)
   end
 
   def index
-    @notes = Note.all
+    @title = Title.find(params[:title_id])
+    @notes = @title.notes
   end
 
   def edit
