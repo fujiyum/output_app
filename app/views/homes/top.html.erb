@@ -3,6 +3,7 @@
         <div class="col">
             <% @titles.each do |title| %>
             <%= attachment_image_tag title, :image, :fill, 10, 10 %>
+            <%= title.title_name %>
             <%= attachment_image_tag title.user, :profile_image, :fill, 10, 10, fallback:"no_image.jpg" %>
             <%= title.user.name %>
             <% end %>

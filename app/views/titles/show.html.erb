@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attachment_image_tag @title, :image, fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %>
-            <h5><%= @title.title %></h5>
-            <%= link_to "インプットを登録する", %>
-            <%= link_to "メモを登録する", %>
-            <% end %>
+            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
+            <h5><%= @title.title_name %></h5>
+            <%#= link_to "インプットを登録する", %>
+            <%= link_to "メモを登録する", new_note_path(:title_id => @title.id) %>
         </div>
     </div>
 </div>

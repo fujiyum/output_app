@@ -1,20 +1,17 @@
 class NotesController < ApplicationController
   def new
     @title = Title.find(params[:title_id])
-    @note = @title.note.new
+    @note = @title.notes.new
   end
 
   def create
-    @title = Title.find(params[:title_id])
-    @note = @title.note.new(note_params)
-    @note.title_id = title.id
+    @note = Note.new(note_params)
     @note.save
     redirect_to notes_path
   end
 
   def index
-    @title = Title.find(params[:title_id])
-    @notes = @title.note
+    @notes = Note.all
   end
 
   def edit

@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
-            <%= @title.title %>
+            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
+            <%= @title.title_name %>
         </div>
         <div class="col">
-            <% from_with model: @note, local:true do |f| %>
+            <%= form_with model: @note, local:true do |f| %>
+            <%= f.hidden_field :title_id, value: @title.id %>
             <%= f.text_field :note %>
             <%= f.submit '登録する' %>
             <% end %>
