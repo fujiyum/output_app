@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attachment_image_tag @user, :profile_image, fill, 60, 60, format:'jpeg', fallback:"no_image.jpg" %>
+            <%= attachment_image_tag @user, :profile_image, size: "60x60", format:'jpeg', fallback:"no_image.jpg" %>
             <h5><%= @user.name %></h5>
             <% if @user.id == current_user.id %>
             <%= link_to "プロフィール編集", edit_user_path(@user) %>
@@ -9,7 +9,8 @@
         </div>
         <div class="col">
             <% @titles.each do |title| %>
-            <%= attachment_image_tag title_image, :image %>
+            <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg" %>
+            <%= title.title_name %>
             <% end %>
         </div>
     </div>
