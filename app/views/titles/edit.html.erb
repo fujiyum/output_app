@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= form_with model:@title, local:true do |f| %>
+            <%= attachment_image_tag @title, :image, size: "60 x 60", fallback:"no_image.jpg" %>
+            <%= f.text_field :title_name, autofocus:true, autocomplete: "title_name" %>
+            <%= f.submit "変更を保存" %>
+            <% end %>
+        </div>
+    </div>
+</div>

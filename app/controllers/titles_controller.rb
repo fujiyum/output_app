@@ -14,7 +14,24 @@ class TitlesController < ApplicationController
     @title = Title.find(params[:id])
   end
 
+  def edit
+    @title = Title.find(params[:id])
+  end
+
+  def update
+    title = Title.find(params[:id])
+    title.update(title_params)
+    redirect_to titles_path
+  end
+
+  def destroy
+    title = Title.find(params[:id])
+    title.destroy
+    redirect_to titles_path
+  end
+
   def index
+    @titles = Title.all
   end
 
   private

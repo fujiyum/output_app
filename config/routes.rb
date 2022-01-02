@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  devise_for :users
  root to: 'homes#top'
  resources :users, only: [:show, :edit, :update]
- resources :titles, only: [:new, :create, :show, :index]
+ resources :titles
  resources :inputs, only: [:new, :create, :index, :show, :edit, :update] do
   resources :comments, only: [:create, :destroy]
  end

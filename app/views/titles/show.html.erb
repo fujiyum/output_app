@@ -5,6 +5,8 @@
             <h5><%= @title.title_name %></h5>
             <%#= link_to "インプットを登録する", %>
             <%= link_to "メモを登録する", new_note_path(:title_id => @title.id) %>
+            <%= link_to "タイトルを編集する", edit_title_path(@title.id) %>
+            <%= link_to "タイトルを削除する", title_path(@title.id), method: :delete %>
         </div>
     </div>
 </div>
