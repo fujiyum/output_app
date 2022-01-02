@@ -1,2 +1,14 @@
-<h1>Notes#edit</h1>
-<p>Find me in app/views/notes/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
+            <%= @title.title_name %>
+        </div>
+        <div class="col">
+            <%= form_with model: @note, local:true do |f| %>
+            <%= f.text_field :note %>
+            <%= f.submit '更新する' %>
+            <% end %>
+        </div>
+    </div>
+</div>

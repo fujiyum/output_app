@@ -17,14 +17,19 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
+    @title = @note.title
   end
 
   def update
     note = Note.find(params[:id])
-    note.update
+    note.update(note_params)
+    redirect_to notes_path(title_id: note.title_id)
   end
 
   def destroy
+    note = Note.find(params[:id])
+    note.destroy
+    redirect_to notes_path(title_id: note.title_id)
   end
 
   private
