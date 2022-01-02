@@ -5,17 +5,14 @@ class InputsController < ApplicationController
   end
 
   def create
-    @title = Title.find(params[:title_id])
-    @input = @title.input.new(input_params)
-    @input.title_id = title.id
+    @input = Input.new(input_params)
     @input.save
-    redirect_to inputs_path
+    redirect_to inputs_path(title_id: @input.title_id)
   end
 
   def index
     @title = Title.find(params[:title_id])
-    @user = @title.user
-    @inputs = @title.input.all
+    @inputs = @title.inputs
   end
 
   def show
