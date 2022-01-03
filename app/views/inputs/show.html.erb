@@ -10,7 +10,12 @@
             <%= @input.input %>
             <%= @input.terget %>
             <%= link_to "インプットの編集", edit_input_path(@input.id) %>
-
+            <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
+            <% @outputs.each do |output| %>
+            <%= output.output %>
+            <%= output.feedback %>
+            <%= link_to "編集", edit_output_path(output.id) %>
+            <% end %>
         </div>
     </div>
 </div>

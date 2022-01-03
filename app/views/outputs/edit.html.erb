@@ -1,2 +1,18 @@
-<h1>Outputs#edit</h1>
-<p>Find me in app/views/outputs/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attachment_image_tag @title, :image, size:"100x150", format:'jpeg' %>
+            <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg" %>
+            <%= @user.name %>
+        </div>
+        <div class="col">
+            <%= form_with model:@output, local: true do |f| %>
+            <p>アウトプットの内容:　<%= f.text_field :output %></p>
+            <p>フィードバック:　<%= f.text_field :feedback %></p>
+            <%= f.submit "更新する" %>
+            <% end %>
+            <%= link_to "削除", output_path(@output.id), method: :delete %>
+        </div>
+    </div>
+</div>

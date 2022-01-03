@@ -20,6 +20,7 @@ class InputsController < ApplicationController
     @input = Input.find(params[:id])
     @title = @input.title
     @user = @title.user
+    @outputs = @input.outputs
   end
 
   def edit

@@ -1,2 +1,20 @@
-<h1>Outputs#new</h1>
-<p>Find me in app/views/outputs/new.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpeg' %>
+            <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size: "60x60", format:'jpeg', fallback:"no_image.jpg" %>
+            <%= @user.name %>
+        </div>
+        <div class="col">
+            <%= @input.input %>
+            <%= @input.terget %>
+            <%= form_with model: @output, local:true do |f| %>
+            <p>アウトプットの入力: <%= f.text_field :output %></p>
+            <p>フィードバック: <%= f.text_field :feedback %></p>
+            <%= f.hidden_field :input_id, value: @input.id %>
+            <%= f.submit '登録する' %>
+            <% end %>
+        </div>
+    </div>
+</div>
