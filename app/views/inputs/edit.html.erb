@@ -1,16 +1,17 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
-            <%= @title.title %>
-            <%= attacment_image_tag @user, :image, fill, 60, 60, format:'jpeg' %>
+            <%= attachment_image_tag @title, :image, size:"100x150", format:'jpeg' %>
+            <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg" %>
             <%= @user.name %>
         </div>
         <div class="col">
-            <%= from_with model:@input, local: true do |f| %>
-            <%= f.text_field :input %>
-            <%= f.text_field :target %>
-            <%= submit "更新する" %>
+            <%= form_with model:@input, local: true do |f| %>
+            <p>インプットの内容:　<%= f.text_field :input %></p>
+            <p>使えそうな場面:　<%= f.text_field :terget %></p>
+            <%= f.submit "更新する" %>
+            <% end %>
         </div>
     </div>
 </div>

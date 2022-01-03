@@ -6,8 +6,9 @@
         </div>
         <div class="col">
             <%= form_with model: @input, local:true do |f| %>
-            <%= f.text_field :input %>
-            <%= f.text_field :terget %>
+            <p>インプット内容: <%= f.text_field :input %></p>
+            <p>使えそうな場面: <%= f.text_field :terget %></p>
+            <%= f.hidden_field :title_id, value: @title.id %>
             <%= f.submit '登録する' %>
             <% end %>
         </div>

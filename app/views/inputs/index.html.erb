@@ -1,15 +1,17 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
-            <%= @title.title %>
-            <%= attacment_image_tag @user, :image, fill, 60, 60, format:'jpeg' %>
+            <%= attachment_image_tag @title, :image, size:"100x150", format:'jpeg' %>
+            <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg" %>
             <%= @user.name %>
         </div>
         <div class="col">
             <% @inputs.each do |input| %>
-            <%= input.input %>
-            <%= input.target %>
+                <%= input.terget %>
+                <%= link_to input_path(input.id) do %>
+                    <%= input.input %>
+                <% end %>
             <% end %>
         </div>
     </div>

@@ -12,22 +12,26 @@ class InputsController < ApplicationController
 
   def index
     @title = Title.find(params[:title_id])
+    @user = @title.user
     @inputs = @title.inputs
   end
 
   def show
-    @title = Title.find(params[:title_id])
+    @input = Input.find(params[:id])
+    @title = @input.title
     @user = @title.user
-    @input = @title.input.find(params[:id])
   end
 
   def edit
-    @title = Title.find(params[:title_id])
-    @user = @title.user
     @input = Input.find(params[:id])
+    @title = @input.title
+    @user = @title.user
   end
 
   def update
+    @input = Input.find(params[:id])
+    @input.update(input_params)
+    redirect_to input_path(@input.id)
   end
 
   private

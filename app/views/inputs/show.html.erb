@@ -1,16 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= attacment_image_tag @title, :image, fill, 60, 60, format:'jpeg' %>
-            <%= @title.title %>
-            <%= attacment_image_tag @user, :image, fill, 60, 60, format:'jpeg' %>
+            <%= attachment_image_tag @title, :image, size:"100x150", format:'jpeg' %>
+            <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg" %>
             <%= @user.name %>
         </div>
         <div class="col">
             <%= @input.input %>
-            <%= @input.target %>
-            <%= link_to "インプットの編集", input_edit_path(@input.id) %>
-            
+            <%= @input.terget %>
+            <%= link_to "インプットの編集", edit_input_path(@input.id) %>
+
         </div>
     </div>
 </div>
