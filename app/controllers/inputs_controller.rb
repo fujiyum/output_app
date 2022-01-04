@@ -22,6 +22,7 @@ class InputsController < ApplicationController
     @title = @input.title
     @user = @title.user
     @outputs = @input.outputs
+    @comment = Comment.new
   end
 
   def edit
