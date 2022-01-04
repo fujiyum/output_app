@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <%= link_to user_path(@user.id) do %>
             <%= attachment_image_tag @user, :profile_image, size: "60x60", format:'jpeg', fallback:"no_image.jpg" %>
+            <% end %>
             <h5><%= @user.name %></h5>
             <% if @user.id == current_user.id %>
             <%= link_to "プロフィール編集", edit_user_path(@user) %>
@@ -9,7 +11,9 @@
         </div>
         <div class="col">
             <% @titles.each do |title| %>
+            <%= link_to inputs_path(:title_id => title.id) do %>
             <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg" %>
+            <% end %>
             <%= title.title_name %>
             <% end %>
         </div>
