@@ -1,8 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <%= link_to user_path(@user.id) do %>
             <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
             <%= @title.title_name %>
+            <%= attachment_image_tag @user, :profile_image, size: "100x150", format:'jpg', fallback:"no_image.jpg" %>
+            <%= @user.name %>
+            <% end %>
         </div>
         <div class="col">
             <%= form_with model: @note, local:true do |f| %>

@@ -1,6 +1,7 @@
 class InputsController < ApplicationController
   def new
     @title = Title.find(params[:title_id])
+    @user = @title.user
     @input = Input.new
   end
 

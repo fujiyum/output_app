@@ -2,6 +2,7 @@ class NotesController < ApplicationController
   def new
     @title = Title.find(params[:title_id])
     @note = @title.notes.new
+    @user = @title.user
   end
 
   def create
@@ -13,11 +14,13 @@ class NotesController < ApplicationController
   def index
     @title = Title.find(params[:title_id])
     @notes = @title.notes
+    @user = @title.user
   end
 
   def edit
     @note = Note.find(params[:id])
     @title = @note.title
+    @user = @title.user
   end
 
   def update
