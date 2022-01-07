@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  root to: 'homes#top'
  resources :users, only: [:show, :edit, :update]
  resources :titles do
-  resources :nices, only: [:create, :destroy]
+  resource :nices, only: [:create, :destroy]
  end
  resources :inputs, only: [:new, :create, :index, :show, :edit, :update] do
   resources :comments, only: [:create, :destroy]

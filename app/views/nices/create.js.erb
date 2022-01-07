@@ -1,1 +1,1 @@
-$("#nices_buttons_<%= @title.id %>").html("<%= j(render 'nices/nice', title: @title ) %>");
+$("#nices_buttons_<%= @title.id %>").html("<%= j(render partial: 'nices/nice', locals: {title: @title}) %>");

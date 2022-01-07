@@ -1,18 +1,15 @@
 class NicesController < ApplicationController
-  before_action :title_params
 
   def create
-    Nice.create(user_id: current_user.id, title_id: @title.id)
+    @title = Title.find(params[:title_id])
+    nice = current_user.nices.build(title_id: params[:title_id])
+    nice.save
   end
 
   def destroy
-    Nice.find_by(user_id: current_user.id, title_id: @title.id).destroy
-  end
-
-  private
-
-  def title_params
     @title = Title.find(params[:title_id])
+    nice = Nice.find_by(user_id: current_user.id, title_id: params[:title_id])
+    nice.destroy
   end
 
 

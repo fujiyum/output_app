@@ -3,7 +3,7 @@
         <div class="col">
             <%= render 'titles/title', title: @title, user: @user %>
             <div id="nices_buttons_<%= @title.id %>">
-                <%= render 'nices/nice', title: @title %>
+                <%= render partial: 'nices/nice', locals: {title: @title} %>
             </div>
         </div>
         <div class="col">
