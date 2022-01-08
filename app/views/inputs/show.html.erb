@@ -11,12 +11,29 @@
             <%= @input.terget %>
             <% if @user.id == current_user.id %>
             <%= link_to "インプットの編集", edit_input_path(@input.id) %>
-            <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
             <% end %>
-            <% @outputs.each do |output| %>
-            <%= output.output %>
-            <%= output.feedback %>
-            <%= link_to "編集", edit_output_path(output.id) %>
+            <% if @outputs.present? && @outputs.count == 3 %>
+                <% @outputs.each do |output| %>
+                    <%= output.output %>
+                    <%= output.feedback %>
+                    <%= link_to "編集", edit_output_path(output.id) %>
+                <% end %>
+            <% elsif @outputs.present? && @outputs.count == 2 %>
+                    <% @outputs.each do |output| %>
+                    <%= output.output %>
+                    <%= output.feedback %>
+                    <%= link_to "編集", edit_output_path(output.id) %>
+                <% end %>
+                    <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id) %>
+            <% elsif @outputs.present? && @outputs.count == 1 %>
+                    <% @outputs.each do |output| %>
+                    <%= output.output %>
+                    <%= output.feedback %>
+                    <%= link_to "編集", edit_output_path(output.id) %>
+                <% end %>
+                    <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id) %>
+            <% else %>
+                    <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
             <% end %>
         </div>
     </div>
