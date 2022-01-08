@@ -16,24 +16,36 @@
                 <% @outputs.each do |output| %>
                     <%= output.output %>
                     <%= output.feedback %>
-                    <%= link_to "編集", edit_output_path(output.id) %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "編集", edit_output_path(output.id) %>
+                    <% end %>
                 <% end %>
             <% elsif @outputs.present? && @outputs.count == 2 %>
                     <% @outputs.each do |output| %>
                     <%= output.output %>
                     <%= output.feedback %>
-                    <%= link_to "編集", edit_output_path(output.id) %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "編集", edit_output_path(output.id) %>
+                    <% end %>
                 <% end %>
-                    <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id) %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id) %>
+                    <% end %>
             <% elsif @outputs.present? && @outputs.count == 1 %>
                     <% @outputs.each do |output| %>
                     <%= output.output %>
                     <%= output.feedback %>
-                    <%= link_to "編集", edit_output_path(output.id) %>
-                <% end %>
-                    <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id) %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "編集", edit_output_path(output.id) %>
+                    <% end %>
+                    <% end %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id) %>
+                    <% end %>
             <% else %>
-                    <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
+                    <% end %>
             <% end %>
         </div>
     </div>

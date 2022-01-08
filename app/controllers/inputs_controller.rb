@@ -15,6 +15,8 @@ class InputsController < ApplicationController
     @title = Title.find(params[:title_id])
     @user = @title.user
     @inputs = @title.inputs
+    @input = Input.find(params[:title_id])
+    @outputs = @input.outputs
   end
 
   def show
