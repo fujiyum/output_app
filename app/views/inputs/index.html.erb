@@ -10,16 +10,39 @@
             <% if @user.id == current_user.id %>
             <%= link_to "インプットを追加", new_input_path(:title_id => @title.id) %>
             <% end %>
-            <%= @inputs.each do |input| %>
-                <%= input.terget %>
-                <%= link_to input_path(input.id) do %>
-                    <%= input.input %>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>input</th>
+                    <th>terget</th>
+                    <th>limit</th>
+                    <th>output.count</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @inputs.each do |input| %>
+                  <tr>
+                    <td>
+                        <%= link_to input_path(input.id) do %>
+                            <%= input.input %>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= input.terget %>
+                    </td>
+                    <td>
+                        <%= input.limit %>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <%= input.is_vaild %>
+                    </td>
+                  </tr>
+                </tbody>
                 <% end %>
-            <% end %>
-            <%= @outputs.each do |output| %>
-                <%= output.output %>
-                <%= output.feedback %>
-            <% end %>
+            </table>
         </div>
     </div>
 </div>

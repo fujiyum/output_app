@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_124327) do
+ActiveRecord::Schema.define(version: 2022_01_09_060810) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "input_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2022_01_06_124327) do
     t.string "terget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "limit"
+    t.boolean "is_vaild", default: true
   end
 
   create_table "nices", force: :cascade do |t|
