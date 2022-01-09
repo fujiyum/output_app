@@ -15,6 +15,7 @@ class InputsController < ApplicationController
     @title = Title.find(params[:title_id])
     @user = @title.user
     @inputs = @title.inputs
+
     @outputs = Output.includes(:input)
   end
 
@@ -41,7 +42,7 @@ class InputsController < ApplicationController
   private
 
   def input_params
-    params.require(:input).permit(:title_id, :input, :terget)
+    params.require(:input).permit(:title_id, :input, :terget, :limit, :is_vaild)
   end
 
 end
