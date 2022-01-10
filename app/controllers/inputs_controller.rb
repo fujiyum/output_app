@@ -15,7 +15,6 @@ class InputsController < ApplicationController
     @title = Title.find(params[:title_id])
     @user = @title.user
     @inputs = @title.inputs
-
     @outputs = Output.includes(:input)
   end
 
