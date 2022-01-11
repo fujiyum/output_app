@@ -1,16 +1,20 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <% @titles.each do |title| %>
-            <%= link_to inputs_path(:title_id => title.id) do %>
-            <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg' %>
-            <% end %>
-            <%= title.title_name %>
-            <%= link_to user_path(title.user.id) do %>
-            <%= attachment_image_tag title.user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg" %>
-            <% end %>
-            <%= title.user.name %>
-            <% end %>
-        </div>
+        <% @titles.each do |title| %>
+            <div class="col">
+                <p>
+                    <%= link_to inputs_path(:title_id => title.id) do %>
+                    <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg' %>
+                    <% end %>
+                <p><%= title.title_name %></p>
+                <p>
+                    <%= link_to user_path(title.user.id) do %>
+                    <%= attachment_image_tag title.user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg", class: "rounded-circle" %>
+                    <% end %>
+                    <%= title.user.name %>
+                </p>
+                <p>★<%= title.nices.count %></p>
+            </div>
+        <% end %>
     </div>
 </div>

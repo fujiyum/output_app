@@ -9,13 +9,20 @@
             <%= link_to "プロフィール編集", edit_user_path(@user) %>
             <% end %>
         </div>
+        <% @titles.each do |title| %>
         <div class="col">
-            <% @titles.each do |title| %>
-            <%= link_to inputs_path(:title_id => title.id) do %>
-            <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg" %>
-            <% end %>
-            <%= title.title_name %>
+            <p>
+                <%= link_to inputs_path(:title_id => title.id) do %>
+                <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg" %>
+                <% end %>
+            </p>
+            <p><%= title.title_name %><p>
+            <% if title.nices.count == 0 %>
+                <p>☆  0</p>
+            <% else %>
+                <p>★<%= title.nices.count %></p>
             <% end %>
         </div>
+        <% end %>
     </div>
 </div>

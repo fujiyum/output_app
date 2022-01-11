@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col">
             <%= render 'titles/title', title: @title, user: @user %>
+            <p>★<%= @title.nices.count %></p>
             <% if @user.id == current_user.id %>
             <%= link_to "メモ一覧", notes_path(:title_id => @title.id) %>
             <% end %>
