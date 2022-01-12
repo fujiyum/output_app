@@ -1,10 +1,18 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-5 mt-5">
             <%= form_with model: @title, local:true do |f| %>
-            <%= f.attachment_field :image %>
-            <%= f.text_field :title_name %>
-            <%= f.submit "保存" %>
+                <div class="custom-file mb-3">
+                    <%= f.attachment_field :image, class:"custom-file-input", id:"customFileLang", lang:"es" %>
+                    <%= f.label :title_image, class:"custom-file-label", for:"customFileLang" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.label :title %>
+                    <%= f.text_field :title_name, class:"form-control", placeholder:"Input title name" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.submit "保存", class:"btn btn-success fw-bold w-100 bg-gradient" %>
+                </div>
             <% end %>
         </div>
     </div>
