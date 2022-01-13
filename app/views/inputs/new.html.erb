@@ -1,19 +1,30 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <%= link_to user_path(@user.id) do %>
-            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpeg' %>
-            <% end %>
-            <%= @title.title_name %>
-        </div>
-        <div class="col">
-            <%= form_with model: @input, local:true do |f| %>
-            <p>インプット内容: <%= f.text_field :input %></p>
-            <p>使えそうな場面: <%= f.text_field :terget %></p>
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-5">
+        <%= render 'titles/title', title: @title, user: @user %>
+        <p>★<%= @title.nices.count %></p>
+        <% if @user.id == current_user.id %>
+            <%= link_to "メモ一覧", notes_path(:title_id => @title.id) %>
+        <% end %>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-5">
+        <%= form_with model: @input, local:true do |f| %>
+            <p>インプットしたこと <%= f.text_field :input, class:"form-control" %></p>
+            <p class="text-danger">登録から2週間後の日付が<br />自動でリミットに設定されます。</p>
+            <p>アウトプットできそうな場面 <%= f.text_field :terget, class:"form-control" %></p>
             <%= f.hidden_field :title_id, value: @title.id %>
             <%= f.hidden_field :limit, value: Time.current.since(14.days) %>
-            <%= f.submit '登録する' %>
-            <% end %>
-        </div>
+            <%= f.submit '登録する', class:"btn btn-primary d-grid gap-2 col-sm-12 col-md-8 col-lg-8" %>
+        <% end %>
     </div>
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-5">
+        <h4>Instructions</h4>
+
+        <ul class=" border rounded">
+            <li>記憶の鮮明な期間は2週間。</li>
+            <li>2週間以内に3回のアウトプットが記憶定着のカギ。</li>
+            <li>実行する場面をイメージして最短で実行に繋げよう。</li>
+        </ul>
+    </div>
+  </div>
 </div>

@@ -1,12 +1,13 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
-            <h5><%= @title.title_name %></h5>
-            <%= link_to "インプットを登録する", new_input_path(:title_id => @title.id) %>
-            <%= link_to "メモを登録する", new_note_path(:title_id => @title.id) %>
-            <%= link_to "タイトルを編集する", edit_title_path(@title.id) %>
-            <%= link_to "タイトルを削除する", title_path(@title.id), method: :delete %>
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6 mt-5 text-center">
+            <div>
+            <%= attachment_image_tag @title, :image, size: "150x200", format:'jpg' %>
+            </div>
+            <h5 class="mt-2">「<%= @title.title_name %>」</h5>
+            <div class="mt-3"><%= link_to "インプットを登録する", new_input_path(:title_id => @title.id), class:"btn btn-primary d-grid gap-2 col-6" %></div>
+            <div class="mt-3"><%= link_to "メモを登録する", new_note_path(:title_id => @title.id), class:"btn btn-secondary d-grid gap-2 col-6" %></div>
+            <div class="mt-3"><%= link_to "タイトルを編集する", edit_title_path(@title.id), class:"btn btn-success d-grid gap-2 col-6" %></div>
         </div>
     </div>
 </div>

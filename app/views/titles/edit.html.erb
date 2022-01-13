@@ -1,11 +1,27 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <%= form_with model:@title, local:true do |f| %>
-            <%= attachment_image_tag @title, :image, size: "60 x 60", fallback:"no_image.jpg" %>
-            <%= f.text_field :title_name, autofocus:true, autocomplete: "title_name" %>
-            <%= f.submit "変更を保存" %>
-            <% end %>
-        </div>
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-sm-12 col-md-8 col-lg-6 mt-5 text-center">
+            <div>
+                <p>Now image file</p>
+                <%= attachment_image_tag @title, :image, size: "150x200", format:'jpg', fallback:"no_image.jpg" %>
+            </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-6 mt-5">
+                <%= form_with model:@title, local:true do |f| %>
+                    <div class="custom-file">
+                        <%= f.attachment_field :image, class:"custom-file-input", id:"customFileLang", lang:"es" %>
+                        <%= f.label :chabge_image, class:"custom-file-label", for:"customFileLang" %>
+                    </div>
+                    <div class="mt-3">
+                        <%= f.label :chabge_title_name %><br />
+                        <%= f.text_field :title_name, autofocus:true, autocomplete: "title_name", class:"form-control" %>
+                    </div>
+                    <div class="mt-3">
+                        <%= f.submit "変更を保存", class:"btn btn-success d-grid gap-2 col-sm-12 col-md-8 col-lg-6" %>
+                    </div>
+                <% end %>
+                <div class="mt-3">
+                    <%= link_to "タイトルを削除", title_path(@title.id), method: :delete, class:"btn btn-danger d-grid gap-2 col-sm-12 col-md-8 col-lg-6" %>
+                </div>
     </div>
 </div>
