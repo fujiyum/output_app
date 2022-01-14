@@ -1,53 +1,80 @@
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col text-right mt-3">
+            <h5>インプット「<%= @input.input %>」　使えそうな場面「<%= @input.terget %>」
+            <% if @user.id == current_user.id %>
+                <%= link_to "インプットの編集", edit_input_path(@input.id), class:"btn btn-success" %>
+            <% end %>
+            </h5>
+        </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-1">
             <%= render 'titles/title', title: @title, user: @user %>
             <div id="nices_buttons_<%= @title.id %>">
                 <%= render partial: 'nices/nice', locals: {title: @title} %>
             </div>
         </div>
-        <div class="col">
-            <%= @input.input %>
-            <%= @input.terget %>
-            <% if @user.id == current_user.id %>
-            <%= link_to "インプットの編集", edit_input_path(@input.id) %>
-            <% end %>
-            <% if @outputs.present? && @outputs.count == 3 %>
-                <% @outputs.each do |output| %>
-                    <%= output.output %>
-                    <%= output.feedback %>
+        <% if @outputs.present? && @outputs.count == 3 %>
+        <% @outputs.each do |output| %>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <h6>output</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.output %></div>
+                <h6>feedback</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.feedback %></div>
+                <div class="text-center mt-2">
                     <% if @user.id == current_user.id %>
-                        <%= link_to "編集", edit_output_path(output.id) %>
+                        <%= link_to "編集", edit_output_path(output.id), class:"btn btn-success w-bold w-100 bg-gradient" %>
                     <% end %>
+                </div>
+            </div>
+        <% end %>
+        <% elsif @outputs.present? && @outputs.count == 2 %>
+        <% @outputs.each do |output| %>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <h6>output</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.output %></div>
+                <h6>feedback</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.feedback %></div>
+                <div class="text-center mt-2">
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "編集", edit_output_path(output.id), class:"btn btn-success w-bold w-100 bg-gradient" %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+            <div>
+                <% if @user.id == current_user.id %>
+                    <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2" %>
                 <% end %>
-            <% elsif @outputs.present? && @outputs.count == 2 %>
-                    <% @outputs.each do |output| %>
-                    <%= output.output %>
-                    <%= output.feedback %>
+            </div>
+        <% elsif @outputs.present? && @outputs.count == 1 %>
+        <% @outputs.each do |output| %>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <h6>output</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.output %></div>
+                <h6>feedback</h6>
+                <div class="border rounded px-5 py-5 text-center"><%= output.feedback %></div>
+                <div class="text-center mt-2">
                     <% if @user.id == current_user.id %>
-                        <%= link_to "編集", edit_output_path(output.id) %>
+                        <%= link_to "編集", edit_output_path(output.id), class:"btn btn-success w-bold w-100 bg-gradient" %>
                     <% end %>
+                </div>
+            </div>
+        <% end %>
+            <div>
+                <% if @user.id == current_user.id %>
+                    <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2" %>
                 <% end %>
-                    <% if @user.id == current_user.id %>
-                        <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id) %>
-                    <% end %>
-            <% elsif @outputs.present? && @outputs.count == 1 %>
-                    <% @outputs.each do |output| %>
-                    <%= output.output %>
-                    <%= output.feedback %>
-                    <% if @user.id == current_user.id %>
-                        <%= link_to "編集", edit_output_path(output.id) %>
-                    <% end %>
-                    <% end %>
-                    <% if @user.id == current_user.id %>
-                        <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id) %>
-                    <% end %>
-            <% else %>
-                    <% if @user.id == current_user.id %>
-                        <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id) %>
-                    <% end %>
-            <% end %>
-        </div>
+            </div>
+        <% else %>
+            <div class="col-sm-12 col-md-10 col-lg-10">
+                <% if @user.id == current_user.id %>
+                    <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2" %>
+                <% end %>
+            </div>
+        <% end %>
+
     </div>
     <div class="row">
         <div class="col">
