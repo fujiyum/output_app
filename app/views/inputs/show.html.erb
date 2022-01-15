@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-sm-12 col-md-2 col-lg-2 mt-1">
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-1 text-center">
             <%= render 'titles/title', title: @title, user: @user %>
             <div id="nices_buttons_<%= @title.id %>">
                 <%= render partial: 'nices/nice', locals: {title: @title} %>
@@ -31,7 +31,7 @@
         <% end %>
         <% elsif @outputs.present? && @outputs.count == 2 %>
         <% @outputs.each do |output| %>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                 <h6>output</h6>
                 <div class="border rounded px-5 py-5 text-center"><%= output.output %></div>
                 <h6>feedback</h6>
@@ -43,14 +43,14 @@
                 </div>
             </div>
         <% end %>
-            <div>
+            <div class="col-sm-12 col-md-2 col-sm-2">
                 <% if @user.id == current_user.id %>
-                    <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2" %>
+                    <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2 w-bold w-100 bg-gradient" %>
                 <% end %>
             </div>
         <% elsif @outputs.present? && @outputs.count == 1 %>
         <% @outputs.each do |output| %>
-            <div class="col-sm-12 col-md-3 col-lg-3">
+            <div class="col-sm-12 col-md-8 col-lg-8">
                 <h6>output</h6>
                 <div class="border rounded px-5 py-5 text-center"><%= output.output %></div>
                 <h6>feedback</h6>
@@ -62,9 +62,9 @@
                 </div>
             </div>
         <% end %>
-            <div>
+            <div class="col-sm-12 col-md-2 col-sm-2">
                 <% if @user.id == current_user.id %>
-                    <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2" %>
+                    <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2 w-bold w-100 bg-gradient" %>
                 <% end %>
             </div>
         <% else %>
@@ -77,22 +77,26 @@
 
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col mb-3 mt-5">
             <% @input.comments.each do |comment| %>
-            <p></p>
+            <%= attachment_image_tag comment.user, :profile_image, size:"30x30", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
             <%= comment.user.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>  <span class="border rounded px-3 py-2 bg-light"><%= comment.comment %></span>
             <% if comment.user == current_user %>
             <%= link_to "削除", input_comment_path(comment.input, comment), method: :delete %>
             <% end %>
             <% end %>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-8">
             <%= form_with(model:[@input, @comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
+                <div class="input-group">
+                <%= f.text_field :comment, rows:'5',placeholder: "コメントをここに", class:"form-control" %>
+                <%= f.button :type => "submit", class:"btn btn-primary input-group-btn" do %>
+                 <i class="fas fa-paper-plane"></i>
+                <% end %>
+                </div>
             <% end %>
         </div>
     </div>
