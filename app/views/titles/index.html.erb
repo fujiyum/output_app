@@ -1,14 +1,17 @@
 <div class="container">
-    <div class="row justify-content-left mt-5 mx-auto">
+    <div class="row  d-flex align-items-center justify-content-center mt-2 mx-2">
         <% @titles.each do |title| %>
-            <div class="col-sm-12 col-md-3 col-lg-2 text-center">
-                <p class="text-truncate"><%= title.title_name %></p>
-                <div class="title_image">
+            <div class="main-content col-sm-12 col-md-3 col-lg-2 text-center border px-0 mr-sm-0 mr-md-5 mt-md-3">
+                <p class="text-truncate border-bottom mb-0"><%= title.title_name %></p>
+                <div class="media">
+                    <span class="media-left">
                     <%= link_to inputs_path(:title_id => title.id) do %>
-                        <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg' %>
+                        <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg", class:"media-object" %>
                     <% end %>
+                    </span>
+                    <span class="image-shadow"></span>
                 </div>
-                <div>
+                <div class="user-info border-top">
                     <%= link_to user_path(title.user.id) do %>
                         <%= attachment_image_tag title.user, :profile_image, size:"30x30", format:'jpeg', fallback:"no_image.jpg", class: "rounded-circle" %>
                     <% end %>
