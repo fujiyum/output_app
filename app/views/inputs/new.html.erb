@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row d-flex align-items-center justify-content-center">
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-5">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-5 text-center">
         <%= render 'titles/title', title: @title, user: @user %>
-        <p>★<%= @title.nices.count %></p>
         <% if @user.id == current_user.id %>
-            <%= link_to "メモ一覧", notes_path(:title_id => @title.id) %>
+            <%= link_to "インプット一覧", inputs_path(:title_id => @title.id), class:"btn btn-primary btn-sm" %>
         <% end %>
     </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-5">
@@ -14,7 +13,7 @@
             <p>アウトプットできそうな場面 <%= f.text_field :terget, class:"form-control" %></p>
             <%= f.hidden_field :title_id, value: @title.id %>
             <%= f.hidden_field :limit, value: Time.current.since(14.days) %>
-            <%= f.submit '登録する', class:"btn btn-primary d-grid gap-2 col-sm-12 col-md-8 col-lg-8" %>
+            <%= f.submit '登録する', class:"btn btn-success d-grid gap-2 col-sm-12 col-md-8 col-lg-8" %>
         <% end %>
     </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-5">

@@ -13,6 +13,9 @@
             <%= render 'titles/title', title: @title, user: @user %>
             <div id="nices_buttons_<%= @title.id %>">
                 <%= render partial: 'nices/nice', locals: {title: @title} %>
+                <% if @user.id == current_user.id %>
+                    <%= link_to "インプット一覧", inputs_path(:title_id => @title.id), class:"btn btn-primary btn-sm" %>
+                <% end %>
             </div>
         </div>
         <% if @outputs.present? && @outputs.count == 3 %>

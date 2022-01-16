@@ -6,7 +6,7 @@
                 <%= render partial: 'nices/nice', locals: {title: @title} %>
             </div>
             <% if @user.id == current_user.id %>
-            <%= link_to "メモ一覧", notes_path(:title_id => @title.id), class:"btn btn-secondary" %>
+                <%= link_to "メモ一覧", notes_path(:title_id => @title.id), class:"btn btn-secondary" %>
             <% end %>
         </div>
         <div class="col-sm-12 col-md-10 col-lg-10 mt-5">

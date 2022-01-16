@@ -1,19 +1,38 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <%= link_to user_path(@user.id) do %>
-            <%= attachment_image_tag @title, :image, size: "100x150", format:'jpg' %>
-            <%= @title.title_name %>
-            <%= attachment_image_tag @user, :profile_image, size: "100x150", format:'jpg', fallback:"no_image.jpg" %>
-            <%= @user.name %>
+    <div class="row d-flex align-items-center justify-content-center mt-5">
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-1 text-center">
+            <%= render 'titles/title', title: @title, user: @user %>
+            <% if @user.id == current_user.id %>
+                <%= link_to "インプット一覧", inputs_path(:title_id => @title.id), class:"btn btn-primary btn-sm" %>
             <% end %>
         </div>
-        <div class="col">
-            <% @title.notes.each do |note| %>
-            <%= note.note %>
-            <%= link_to "編集", edit_note_path(note.id) %>
-            <%= link_to "削除", note_path(note.id), method: :delete %>
-            <% end %>
+        <div class="col-sm-12 col-md-10 col-lg-10 mt-5">
+            <div class="text-right mb-3">
+                <% if @user.id == current_user.id %>
+                    <%= link_to "メモを追加", new_note_path(:title_id => @title.id), class:"btn btn-success" %>
+                <% end %>
+            </div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th>memo</th>
+                    <th>botton</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @title.notes.each do |note| %>
+                  <tr>
+                    <td>
+                        <%= note.note %>
+                    </td>
+                    <td class="col-4">
+                        <%= link_to "編集", edit_note_path(note.id), class:"btn btn-success" %>
+                        <%= link_to "削除", note_path(note.id), method: :delete, class:"btn btn-danger" %>
+                    </td>
+                   </tr>
+                </tbody>
+                <% end %>
+            </table>
         </div>
     </div>
 </div>
