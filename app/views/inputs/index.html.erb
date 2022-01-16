@@ -1,8 +1,10 @@
 <div class="container">
     <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-sm-12 col-md-2 col-lg-2 mt-5">
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-5 text-center">
             <%= render 'titles/title', title: @title, user: @user %>
-            <p>★<%= @title.nices.count %></p>
+            <div id="nices_buttons_<%= @title.id %>">
+                <%= render partial: 'nices/nice', locals: {title: @title} %>
+            </div>
             <% if @user.id == current_user.id %>
             <%= link_to "メモ一覧", notes_path(:title_id => @title.id), class:"btn btn-secondary" %>
             <% end %>
