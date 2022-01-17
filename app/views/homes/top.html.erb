@@ -1,12 +1,25 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <% @titles.each do |title| %>
-            <%= attachment_image_tag title, :image, :fill, 10, 10 %>
-            <%= title.title_name %>
-            <%= attachment_image_tag title.user, :profile_image, :fill, 10, 10, fallback:"no_image.jpg" %>
-            <%= title.user.name %>
-            <% end %>
-        </div>
+    <div class="row  d-flex align-items-center justify-content-center mt-2 mx-2">
+        <% @titles.each do |title| %>
+            <div class="main-content col-sm-12 col-md-3 col-lg-2 text-center border px-0 mr-sm-0 mr-md-5 mt-md-3">
+                <p class="text-truncate border-bottom mb-0"><%= title.title_name %></p>
+                <div class="image">
+                    <%= link_to inputs_path(:title_id => title.id) do %>
+                        <%= attachment_image_tag title, :image, size: "100x150", format:'jpeg', fallback:"no_image.jpg" %>
+                    <% end %>
+                </div>
+                <div class="user-info border-top">
+                    <%= link_to user_path(title.user.id) do %>
+                        <%= attachment_image_tag title.user, :profile_image, size:"30x30", format:'jpeg', fallback:"no_image.jpg", class: "rounded-circle" %>
+                    <% end %>
+                    <span class="text-truncate"><%= title.user.name %></span>
+                    <% if title.nices.count == 0 %>
+                        <span><i class="far fa-thumbs-up">0</i>
+                    <% else %>
+                        <i class="fas fa-thumbs-up"><%= title.nices.count %></i>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>

@@ -2,17 +2,21 @@
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-5 text-center">
             <%= render 'titles/title', title: @title, user: @user %>
-            <div id="nices_buttons_<%= @title.id %>">
-                <%= render partial: 'nices/nice', locals: {title: @title} %>
-            </div>
-            <% if @user.id == current_user.id %>
-                <%= link_to "メモ一覧", notes_path(:title_id => @title.id), class:"btn btn-secondary" %>
+            <% if user_signed_in? %>
+                <div id="nices_buttons_<%= @title.id %>">
+                    <%= render partial: 'nices/nice', locals: {title: @title} %>
+                </div>
+                <% if @user.id == current_user.id %>
+                    <%= link_to "メモ一覧", notes_path(:title_id => @title.id), class:"btn btn-secondary" %>
+                <% end %>
             <% end %>
         </div>
         <div class="col-sm-12 col-md-10 col-lg-10 mt-5">
             <div class="text-right mb-3">
-                <% if @user.id == current_user.id %>
-                    <%= link_to "インプットを追加", new_input_path(:title_id => @title.id), class:"btn btn-success" %>
+                <% if user_signed_in? %>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to "インプットを追加", new_input_path(:title_id => @title.id), class:"btn btn-success" %>
+                    <% end %>
                 <% end %>
             </div>
             <table class="table table-bordered">
