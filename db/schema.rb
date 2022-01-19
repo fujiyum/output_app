@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_060810) do
+ActiveRecord::Schema.define(version: 2022_01_19_133739) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "input_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_060810) do
   create_table "inputs", force: :cascade do |t|
     t.integer "title_id"
     t.string "input"
-    t.string "terget"
+    t.string "target"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "limit"
