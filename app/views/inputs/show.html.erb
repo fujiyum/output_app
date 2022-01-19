@@ -10,6 +10,19 @@
             </h5>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <p>
+                <input type="hidden" id="userYear" value="<%= @input.limit.year %>">
+                <input type="hidden" id="userMonth" value="<%= @input.limit.month %>">
+                <input type="hidden" id="userDate" value="<%= @input.limit.day %>">
+                <input type="hidden" id="userHour" value="<%= @input.limit.hour %>">
+                <input type="hidden" id="userMin" value="<%= @input.limit.min %>">
+                <input type="hidden" id="userSec" value="<%= @input.limit.sec %>">
+            </p>
+            <p id="RealtimeCountdownArea"></p>
+        </div>
+    </div>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-1 text-center">
             <%= render 'titles/title', title: @title, user: @user %>

@@ -4,7 +4,13 @@ function showCountdown() {
    var dnumNow = nowDate.getTime();
 
    // 指定日時を数値(1970-01-01 00:00:00からのミリ秒)に変換
-   var targetDate = new Date("2022/1/30");
+   var inputYear  = document.getElementById("userYear").value;
+   var inputMonth = document.getElementById("userMonth").value - 1;
+   var inputDate  = document.getElementById("userDate").value;
+   var inputHour  = document.getElementById("userHour").value;
+   var inputMin   = document.getElementById("userMin").value;
+   var inputSec   = document.getElementById("userSec").value;
+   var targetDate = new Date( inputYear, inputMonth, inputDate, inputHour, inputMin, inputSec );
    var dnumTarget = targetDate.getTime();
 
    // 表示を準備

@@ -19,7 +19,7 @@
                     <% end %>
                 <% end %>
             </div>
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <thead class="table-dark">
                   <tr>
                     <th>input</th>
@@ -41,10 +41,10 @@
                         <%= input.terget %>
                     </td>
                     <td>
-                        <p id="RealtimeCountdownArea"></p>
-
+                       <%= input.limit.strftime('%Y/%m/%d %H:%M:%S') %>
                     </td>
                     <td>
+                        <%= input.outputs.count %>
                     </td>
                     <td>
                         <%= input.is_vaild %>
