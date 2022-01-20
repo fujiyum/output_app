@@ -13,9 +13,9 @@
 
   <body>
     <header>
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
        <div class="container">
-         <a class="navbar-brand" href="/">output</a>
+         <a class="navbar-brand text-dark" href="/">Monophyllaea</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
            <sapn class="navbar-toggler-icon"></sapn>
          </button>
@@ -23,36 +23,40 @@
            <ul class="navbar-nav ml-auto">
            <% if user_signed_in? %>
             <li class="navbar-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class:'nav-link text-light' %>
+              <%= link_to 'My page', user_path(current_user.id), class:'nav-link text-dark' %>
             </li>
             <li class="navbar-item">
-              <%= link_to 'タイトル新規登録', new_title_path, class:'nav-link text-light' %>
+              <%= link_to 'New input', new_title_path, class:'nav-kink text-dark' %>
             </li>
             <li class="navbar-item">
-              <%= link_to 'タイトル一覧', titles_path, class:'nav-link text-light' %>
+              <%= link_to 'titles', titles_path, class:'nav-link text-dark' %>
             </li>
             <li class="navbar-item">
-              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:'nav-link text-light' %>
+              <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
             </li>
            <% else %>
             <li class="navbar-item">
-              <%= link_to 'TOP', root_path, class:'nav-link text-light' %>
+              <%= link_to 'Titles', titles_path, class:'nav-link text-dark' %>
             </li>
             <li class="navbar-item">
-              <%= link_to ' sign up', new_user_registration_path, class:'nav-link text-light' %>
+              <%= link_to 'Sign up', new_user_registration_path, class:'nav-link text-dark' %>
             </li>
             <li class="navbar-item">
-              <%= link_to ' Login', new_user_session_path, class:'nav-link text-light' %>
+              <%= link_to 'Log in', new_user_session_path, class:'nav-link text-dark' %>
             </li>
            <% end %>
            </ul>
          </div>
-         <div class="col search">
-           <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-             <%= f.text_field :name, placeholder: "User Name"%>
-             <%= f.submit :search %>
-           <% end %>
-         </div>
+         <nav class="navbar navbar-light">
+           <div class="container-fluid">
+               <form class="d-flex">
+                 <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+                   <%= f.text_field :name, placeholder: "Username", class:"form-control"%>
+                   <%= f.submit :search, class:"btn btn-outline-success" %>
+                 <% end %>
+                </form>
+           </div>
+         </nav>
        </div>
      </nav>
     </header>
