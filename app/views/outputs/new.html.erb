@@ -7,10 +7,9 @@
     <% end %>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col text-right mt-3">
-            <h6>インプット<span class="h4">「<%= @input.input %>」</span>使えそうな場面<span class="h4">「<%= @input.target %>」</span></h6>
-        </div>
+    <div class="d-flex flex-row align-items-center justify-content-center mt-5">
+        <h6>インプット「<%= @input.input %>」</h6>
+        <h6>使えそうな場面「<%= @input.target %>」</h6>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-1 text-center">
@@ -21,10 +20,16 @@
         </div>
         <div class="col">
             <%= form_with model: @output, local:true do |f| %>
-                <div>アウトプットの入力 <%= f.text_field :output, class:"form-control" %></div>
-                <div class="mt-3">フィードバック <%= f.text_area :feedback, class:"form-control" %></div>
-                <%= f.hidden_field :input_id, value: @input.id %>
-                <div class="mt-3 text-center"><%= f.submit '登録する', class:"btn btn-success col-sm-12 col-md-6 col-lg-6" %></div>
+            <%= f.hidden_field :input_id, value: @input.id %>
+                <div>
+                    NEW OUTPUT <%= f.text_field :output, class:"form-control" %>
+                </div>
+                <div class="mt-3">
+                    NEW FEEDBACK <%= f.text_area :feedback, class:"form-control" %>
+                </div>
+                <div class="mt-3 text-center">
+                    <%= f.submit '登録する', class:"btn btn-success col-sm-12 col-md-6 col-lg-6" %>
+                </div>
             <% end %>
         </div>
     </div>

@@ -6,6 +6,13 @@
       <% end %>
     <% end %>
 </div>
+
+<div class="container">
+    <div class="row text-center mb-3">
+        <div class="col">
+            <img id="preview" class="col-8">
+        </div>
+    </div>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-8 col-lg-5 mt-5">
             <%= form_with model: @title, local:true do |f| %>
@@ -24,3 +31,13 @@
         </div>
     </div>
 </div>
+
+<script>
+  $('#customFileLang').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>
