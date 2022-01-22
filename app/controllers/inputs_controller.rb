@@ -14,7 +14,7 @@ class InputsController < ApplicationController
   def index
     @title = Title.find(params[:title_id])
     @user = @title.user
-    @inputs = @title.inputs
+    @inputs = @title.inputs.page(params[:page]).reverse_order
   end
 
   def show
@@ -40,7 +40,7 @@ class InputsController < ApplicationController
   private
 
   def input_params
-    params.require(:input).permit(:title_id, :input, :terget, :limit, :is_vaild)
+    params.require(:input).permit(:title_id, :input, :target, :limit, :is_vaild)
   end
 
 end
