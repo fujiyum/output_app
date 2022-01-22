@@ -1,9 +1,11 @@
-<% if @input.errors.any? %>
-  <%= @input.errors.count %>件のエラーが発生しました
-  <% @input.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
+<div class="error_message text-center mt-3">
+    <% if @input.errors.any? %>
+      <%= @input.errors.count %>件のエラーが発生しました
+      <% @input.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+</div>
 <div class="container">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-5 text-center">

@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :nices, dependent: :destroy
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   attachment :profile_image
+
+
 
 end

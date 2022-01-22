@@ -1,9 +1,11 @@
-<% if @title.errors.any? %>
-  <%= @title.errors.count %>件のエラーが発生しました
-  <% @title.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
+<div class="error_message text-center mt-3">
+    <% if @title.errors.any? %>
+      <%= @title.errors.count %>件のエラーが発生しました
+      <% @title.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+</div>
 <div class="container">
   <div class="row d-flex align-items-center justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-6 mt-5 text-center">
@@ -27,7 +29,7 @@
                     </div>
                 <% end %>
                 <div class="mt-3">
-                    <%= link_to "タイトルを削除", title_path(@title.id), method: :delete, class:"btn btn-danger d-grid gap-2 col-sm-12 col-md-8 col-lg-6" %>
+                    <%= link_to "タイトルを削除", title_path(@title.id), method: :delete, "data-confirm" => "削除しますか？", class:"btn btn-danger d-grid gap-2 col-sm-12 col-md-8 col-lg-6" %>
                 </div>
     </div>
 </div>

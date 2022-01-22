@@ -1,17 +1,21 @@
 <div class="container">
-    <div class="row">
-        <div class="col text-right mt-3">
-            <h5>インプット「<%= @input.input %>」　使えそうな場面「<%= @input.target %>」
+    <div class="d-flex flex-row align-items-center justify-content-center mt-5">
+        <div class="h5">
+                インプット「<%= @input.input %>」
+        </div>
+        <div class="h5">
+            使えそうな場面「<%= @input.target %>」
+        </div>
+        <div>
             <% if user_signed_in? %>
                 <% if @user.id == current_user.id %>
                     <%= link_to "インプットの編集", edit_input_path(@input.id), class:"btn btn-success" %>
                 <% end %>
             <% end %>
-            </h5>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             <p>
                 <input type="hidden" id="userYear" value="<%= @input.limit.year %>">
                 <input type="hidden" id="userMonth" value="<%= @input.limit.month %>">
@@ -20,7 +24,7 @@
                 <input type="hidden" id="userMin" value="<%= @input.limit.min %>">
                 <input type="hidden" id="userSec" value="<%= @input.limit.sec %>">
             </p>
-            <p id="RealtimeCountdownArea"></p>
+            <h5 id="RealtimeCountdownArea" class="bg-light"></h5>
         </div>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
@@ -108,7 +112,7 @@
         <% end %>
 
     </div>
-    <div class="row border-top">
+    <div class="row border-top mt-3">
         <div class="col mb-3 mt-5">
             <% @input.comments.each do |comment| %>
                 <%= attachment_image_tag comment.user, :profile_image, size:"30x30", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
