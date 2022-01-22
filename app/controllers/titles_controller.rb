@@ -31,7 +31,7 @@ class TitlesController < ApplicationController
   end
 
   def index
-    @titles = Title.all
+    @titles = Title.page(params[:page]).reverse_order
   end
 
   private
