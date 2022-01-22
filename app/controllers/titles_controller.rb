@@ -1,4 +1,6 @@
 class TitlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def new
     @title = Title.new
   end
@@ -6,8 +8,11 @@ class TitlesController < ApplicationController
   def create
     @title = Title.new(title_params)
     @title.user_id = current_user.id
-    @title.save
-    redirect_to title_path(@title.id)
+    if @title.save
+      redirect_to title_path(@title.id)
+    else
+      render :new
+    end
   end
 
   def show
@@ -20,8 +25,11 @@ class TitlesController < ApplicationController
 
   def update
     title = Title.find(params[:id])
-    title.update(title_params)
-    redirect_to titles_path
+    if title.update(title_params)
+      redirect_to titles_path
+    else
+      render :edit
+    end
   end
 
   def destroy

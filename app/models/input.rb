@@ -4,6 +4,9 @@ class Input < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :outputs, dependent: :destroy
 
+    validates :input, presence: true
+    validates :target, presence: true
+
     enum is_vaild: { '期限までに3回OUTPUT': true, '再登録へ': false }
 
     def self.input_destroy

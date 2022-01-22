@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
     @titles = @user.titles.page(params[:page]).reverse_order
@@ -10,13 +11,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   def search
     if params[:name].present?
-      @users = User.where('name LIKE ?', "%#{params[:name]}%")
+      @users = User.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).reverse_order
     else
       @users = User.none
     end

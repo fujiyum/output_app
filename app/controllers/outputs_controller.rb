@@ -1,4 +1,6 @@
 class OutputsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @input = Input.find(params[:input_id])
     @title = @input.title
@@ -8,8 +10,11 @@ class OutputsController < ApplicationController
 
   def create
     @output = Output.new(output_params)
-    @output.save
-    redirect_to input_path(@output.input.id)
+    if @output.save
+      redirect_to input_path(@output.input.id)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,8 +26,11 @@ class OutputsController < ApplicationController
 
   def update
     output = Output.find(params[:id])
-    output.update(output_params)
-    redirect_to input_path(output.input.id)
+    if output.update(output_params)
+      redirect_to input_path(output.input.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

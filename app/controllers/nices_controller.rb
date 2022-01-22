@@ -1,4 +1,5 @@
 class NicesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @title = Title.find(params[:title_id])

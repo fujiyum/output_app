@@ -47,16 +47,14 @@
            <% end %>
            </ul>
          </div>
-         <nav class="navbar navbar-light">
-           <div class="container-fluid">
-               <form class="d-flex">
-                 <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-                   <%= f.text_field :name, placeholder: "Username", class:"form-control"%>
-                   <%= f.submit :search, class:"btn btn-outline-success" %>
-                 <% end %>
-                </form>
-           </div>
-         </nav>
+           <nav class="navbar navbar-light">
+            <div class="form-inline container-fluid">
+                <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+                <%= f.text_field :name, placeholder: "Username", class:"form-control" %>
+                <%= f.submit :search, class:"btn btn-outline-success" %>
+                <% end %>
+            </div>
+           </nav>
        </div>
      </nav>
     </header>

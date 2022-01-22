@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @title = Title.find(params[:title_id])
     @note = @title.notes.new
@@ -7,8 +9,11 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
-    @note.save
-    redirect_to notes_path(title_id: @note.title_id)
+    if @note.save
+      redirect_to notes_path(title_id: @note.title_id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -25,8 +30,11 @@ class NotesController < ApplicationController
 
   def update
     note = Note.find(params[:id])
-    note.update(note_params)
-    redirect_to notes_path(title_id: note.title_id)
+    if note.update(note_params)
+      redirect_to notes_path(title_id: note.title_id)
+    else
+      render :edit
+    end
   end
 
   def destroy

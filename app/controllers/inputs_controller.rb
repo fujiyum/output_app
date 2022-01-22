@@ -1,4 +1,6 @@
 class InputsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @title = Title.find(params[:title_id])
     @user = @title.user
@@ -7,8 +9,11 @@ class InputsController < ApplicationController
 
   def create
     @input = Input.new(input_params)
-    @input.save
-    redirect_to inputs_path(title_id: @input.title_id)
+    if @input.save
+      redirect_to inputs_path(title_id: @input.title_id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -33,8 +38,11 @@ class InputsController < ApplicationController
 
   def update
     @input = Input.find(params[:id])
-    @input.update(input_params)
-    redirect_to input_path(@input.id)
+    if @input.update(input_params)
+      redirect_to input_path(@input.id)
+    else
+      render :edit
+    end
   end
 
   private
