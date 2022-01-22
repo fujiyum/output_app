@@ -13,6 +13,9 @@ class OutputsController < ApplicationController
     if @output.save
       redirect_to input_path(@output.input.id)
     else
+      @input = @output.input
+      @title = @input.title
+      @user = @title.user
       render :new
     end
   end
@@ -25,10 +28,13 @@ class OutputsController < ApplicationController
   end
 
   def update
-    output = Output.find(params[:id])
-    if output.update(output_params)
-      redirect_to input_path(output.input.id)
+    @output = Output.find(params[:id])
+    if @output.update(output_params)
+      redirect_to input_path(@output.input.id)
     else
+    @input = @output.input
+    @title = @input.title
+    @user = @title.user
       render :edit
     end
   end

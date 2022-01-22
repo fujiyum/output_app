@@ -12,6 +12,8 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to notes_path(title_id: @note.title_id)
     else
+      @title = @note.title
+      @user = @title.user
       render :new
     end
   end
@@ -29,10 +31,12 @@ class NotesController < ApplicationController
   end
 
   def update
-    note = Note.find(params[:id])
-    if note.update(note_params)
+    @note = Note.find(params[:id])
+    if @note.update(note_params)
       redirect_to notes_path(title_id: note.title_id)
     else
+      @title = @note.title
+      @user = @title.user
       render :edit
     end
   end

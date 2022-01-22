@@ -24,8 +24,8 @@ class TitlesController < ApplicationController
   end
 
   def update
-    title = Title.find(params[:id])
-    if title.update(title_params)
+    @title = Title.find(params[:id])
+    if @title.update(title_params)
       redirect_to titles_path
     else
       render :edit

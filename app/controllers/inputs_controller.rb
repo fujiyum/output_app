@@ -12,6 +12,8 @@ class InputsController < ApplicationController
     if @input.save
       redirect_to inputs_path(title_id: @input.title_id)
     else
+      @title = @input.title
+      @user = @title.user
       render :new
     end
   end
@@ -41,6 +43,8 @@ class InputsController < ApplicationController
     if @input.update(input_params)
       redirect_to input_path(@input.id)
     else
+      @title = @input.title
+      @user = @title.user
       render :edit
     end
   end

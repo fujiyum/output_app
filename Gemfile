@@ -80,3 +80,4 @@ gem 'rubocop', require:false
 gem 'rubocop-rails', require:false
 
 gem 'kaminari','~> 1.2.1'
+gem 'rails-i18n'
