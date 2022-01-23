@@ -18,6 +18,19 @@
     padding:0;
 }
 
+.slick-content-second {
+    position: absolute;
+    background-color: rgba(128,128,128,0.6);
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 150;
+    margin:0;
+    padding:0;
+}
+
 
 .fa-chevron-left {
   font-size: 50px;

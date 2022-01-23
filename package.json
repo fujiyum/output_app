@@ -1,5 +1,7 @@
 {
   "name": "output_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "rfs": "^9.0.6"
+  }
 }

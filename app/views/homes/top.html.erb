@@ -3,19 +3,20 @@
         <div class="slick-outer col px-0">
             <%= image_tag 'Leaf(L).jpg', class:"img-fluid" %>
             <div class="slick-content">
-            <h1 class="text-center text-white">Monophyllaea</h1>
+                <h1 class="text-center text-white">Monophyllaea</h1>
             </div>
         </div>
-        <div class="slick-outer">
+        <div class="slick-outer col px-0">
             <%= image_tag 'Leaf(L).jpg', class:"img-fluid" %>
-            <div class="slick-content">
-            <p class="text-center text-dark"><span class="h1">Monophyllaea</span><br />
-            <span class="h3">~モノフィレア~</span><br />
-            １枚の子葉を無限に成長させ、その葉だけで一生を過ごす植物<br />
-            その植物のように、1人に1つの人生を<br />
-            理想の自分に向かって成長し続ける。<br />
-            という想いを込めています。
-            </p>
+            <div class="slick-content-second py-2 px-2">
+                <h1 class="text-center text-white">Monophyllaea</h1>
+                <h3 class="text-center text-white">~モノフィレア~</h3>
+                <h6 class="text-center text-white">１枚の子葉を無限に成長させ<br />
+                その葉だけで一生を過ごす植物<br />
+                その植物のように、1人に1つの人生を<br />
+                理想の自分に向かって成長し続ける。<br />
+                という想いを込めています。
+                </h6>
             </div>
         </div>
     </div>
@@ -24,12 +25,21 @@
             <%= image_tag 'books-color(s).jpg', class:"img-fluid" %>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
+            <% if user_signed_in? %>
             <ul>
-                <li>Monophyllaea ~モノフィレア~<br />
-                1枚の葉を成長させ続ける植物です。</li>
-                <li>脳内世界で学びを止めず<br />
-                現実世界にアウトプットし続ける想いが込められてます。</li>
+                <li>ヘッダーの[New Title]から学びを登録できます。</li>
+                <li>その後インプットもしくはメモを保存できます。</li>
+                <li>インプットは2週間の期限が自動で設定されます。<br />
+                その期間に3回アウトプットを登録しましょう。</li>
             </ul>
+            <% else %>
+            <ul>
+                <li>[Sign up]もしくは[Log in]後、機能が使えるようになります。</li>
+                <li>学び「タイトル」の登録</li>
+                <li>「インプット」「アウトプット」「メモ」の登録</li>
+                <li>コメント及びナイスボタン</li>
+            </ul>
+            <% end %>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
             <h4>How many reference books have you read so far?</h4>
