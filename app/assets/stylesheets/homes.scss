@@ -2,17 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-img {
+.slick-outer {
     position: relative;
 }
 
-.cover-text {
+.slick-content {
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+    z-index: 150;
     margin:0;
     padding:0;
+}
+
+
+.fa-chevron-left {
+  font-size: 50px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 100;
+}
+
+.fa-chevron-right {
+  font-size: 50px;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 50%;
 }
