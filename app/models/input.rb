@@ -7,14 +7,14 @@ class Input < ApplicationRecord
     validates :input, presence: true
     validates :target, presence: true
 
-    enum is_vaild: { '期限までに3回OUTPUT': true, '再登録へ': false }
+    enum is_vaild: { '期限までに3回OUTPUT': true, '再登録': false }
 
     def self.input_destroy
         time = Time.now
         inputs = Input.all
         inputs.each do |input|
             if input.limit < time && input.is_valid == '期限までに3回OUTPUT'
-                input.is_valid = '再登録へ'
+                input.is_valid = '再登録'
                 input.save
             end
         end

@@ -1,27 +1,15 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @users.each do |user| %>
-                <tr>
-                    <td>
-                        <%= link_to user_path(user.id) do %>
-                            <%= user.name %>
-                        <% end %>
-                    </td>
-                </tr>
+    <div class="row d-flex align-items-center justify-content-center">
+        <% @users.each do |user| %>
+            <div class="col-sm-12 col-md-8 col-lg-4 mt-5 text-center">
+                <%= attachment_image_tag user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
+                <%= link_to user_path(user.id) do %>
+                    <%= user.name %>
                 <% end %>
-              </tbody>
-            </table>
+            </div>
+        <% end %>
+        <div class="mt-5">
+          <%= paginate @users %>
         </div>
-    <div class="mt-5">
-        <%= paginate @users %>
-    </div>
     </div>
 </div>

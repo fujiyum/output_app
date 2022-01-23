@@ -1,5 +1,5 @@
 <div>
-    <% if user_signed_in? %>
+    <% if user.id == current_user.id %>
         <%= link_to title_path(title.id) do %>
            <%= attachment_image_tag title, :image, size:"100x150", format:'jpeg' %>
         <% end %>
