@@ -1,5 +1,5 @@
 class InputsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def new
     @title = Title.find(params[:title_id])
@@ -54,5 +54,4 @@ class InputsController < ApplicationController
   def input_params
     params.require(:input).permit(:title_id, :input, :target, :limit, :is_vaild)
   end
-
 end

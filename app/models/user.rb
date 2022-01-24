@@ -12,7 +12,4 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   attachment :profile_image
-
-
-
 end

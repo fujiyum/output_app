@@ -32,9 +32,9 @@ class OutputsController < ApplicationController
     if @output.update(output_params)
       redirect_to input_path(@output.input.id)
     else
-    @input = @output.input
-    @title = @input.title
-    @user = @title.user
+      @input = @output.input
+      @title = @input.title
+      @user = @title.user
       render :edit
     end
   end
@@ -50,5 +50,4 @@ class OutputsController < ApplicationController
   def output_params
     params.require(:output).permit(:input_id, :output, :feedback)
   end
-
 end

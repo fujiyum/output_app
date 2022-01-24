@@ -25,5 +25,5 @@ set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 
 every 1.minute do
-    runner 'Input.input_destroy'
+  runner 'Input.input_destroy'
 end

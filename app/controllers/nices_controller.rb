@@ -12,6 +12,4 @@ class NicesController < ApplicationController
     nice = Nice.find_by(user_id: current_user.id, title_id: params[:title_id])
     nice.destroy
   end
-
-
 end

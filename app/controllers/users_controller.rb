@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     @titles = @user.titles.page(params[:page]).reverse_order
@@ -19,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def search
-    if params[:name].present?
-      @users = User.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).reverse_order
-    else
-      @users = User.none
-    end
+    @users = if params[:name].present?
+               User.where('name LIKE ?', "%#{params[:name]}%").page(params[:page]).reverse_order
+             else
+               User.none
+             end
   end
 
   private
@@ -31,5 +30,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :profile_image)
   end
-
 end

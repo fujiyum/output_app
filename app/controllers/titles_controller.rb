@@ -47,5 +47,4 @@ class TitlesController < ApplicationController
   def title_params
     params.require(:title).permit(:user_id, :title_name, :image)
   end
-
 end
