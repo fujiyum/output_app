@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container mb-5">
     <div class="row d-flex align-items-center justify-content-center">
         <% @users.each do |user| %>
             <div class="col-sm-12 col-md-8 col-lg-4 mt-5 text-center">
-                <%= attachment_image_tag user, :profile_image, size:"60x60", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
+                <%= attachment_image_tag user, :profile_image, size:"100x100", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
                 <%= link_to user_path(user.id) do %>
-                    <%= user.name %>
+                    <span class="h5 ml-3"><%= user.name %></span>
                 <% end %>
             </div>
         <% end %>

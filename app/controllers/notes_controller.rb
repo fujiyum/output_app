@@ -33,7 +33,7 @@ class NotesController < ApplicationController
   def update
     @note = Note.find(params[:id])
     if @note.update(note_params)
-      redirect_to notes_path(title_id: note.title_id)
+      redirect_to notes_path(title_id: @note.title_id)
     else
       @title = @note.title
       @user = @title.user

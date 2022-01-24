@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-3">
     <div class="d-flex flex-row align-items-center justify-content-center mt-5">
         <div class="h5">
                 インプット「<%= @input.input %>」
@@ -23,7 +23,7 @@
                 <input type="hidden" id="userSec" value="<%= @input.limit.sec %>">
             </p>
             <% if @outputs.count == 3 %>
-                <h5>You acquired this input!</h5>
+                <h5 class="bg-danger text-white">You acquired this input!</h5>
             <% else %>
                 <h5 id="RealtimeCountdownArea" class="bg-light"></h5>
             <% end %>
