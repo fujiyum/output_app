@@ -46,7 +46,7 @@ function showCountdown() {
    }
    else {
       // 期限が過ぎた場合
-      "Restart";
+      msg = "インプットを再登録して下さい。";
    }
 
    // 作成した文字列を表示
