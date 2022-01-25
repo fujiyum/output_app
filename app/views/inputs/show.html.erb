@@ -23,7 +23,7 @@
                 <input type="hidden" id="userSec" value="<%= @input.limit.sec %>">
             </p>
             <% if @outputs.count == 3 %>
-                <h5 class="bg-danger text-white">You acquired this input!</h5>
+                <h5 class="alert alert-danger">You acquired this input!</h5>
             <% else %>
                 <h5 id="RealtimeCountdownArea" class="bg-light"></h5>
             <% end %>
