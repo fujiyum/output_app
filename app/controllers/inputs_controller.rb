@@ -30,6 +30,7 @@ class InputsController < ApplicationController
     @user = @title.user
     @outputs = @input.outputs
     @comment = Comment.new
+    @comments_view = @input.comments.page(params[:page]).per(5)
   end
 
   def edit

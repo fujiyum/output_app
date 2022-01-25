@@ -35,7 +35,7 @@
             <% if user_signed_in? %>
                 <div id="nices_buttons_<%= @title.id %>">
                     <%= render partial: 'nices/nice', locals: {title: @title} %>
-                    <%= link_to "インプット一覧", inputs_path(:title_id => @title.id), class:"btn btn-primary btn-sm" %>
+                    <%= link_to "インプット一覧", inputs_path(:title_id => @title.id), class:"btn btn-info btn-sm" %>
                 </div>
             <% end %>
         </div>
@@ -101,8 +101,8 @@
 
     </div>
     <div class="row border-top mt-3">
-        <% @input.comments.each do |comment| %>
-            <div class="col-12 mb-3 mt-3">
+        <% @comments_view.each do |comment| %>
+            <div class="col-12">
                 <div>
                     <%= attachment_image_tag comment.user, :profile_image, size:"30x30", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
                     <%= comment.user.name %>
@@ -118,6 +118,9 @@
                 </div>
             </div>
         <% end %>
+        <div>
+            <%= paginate @comments_view %>
+        </div>
     </div>
     <% if user_signed_in?%>
     <div class="row d-flex align-items-center justify-content-center mt-2">

@@ -33,9 +33,9 @@ class TitlesController < ApplicationController
   end
 
   def destroy
-    title = Title.find(params[:id])
-    title.destroy
-    redirect_to titles_path
+    @title = Title.find(params[:id])
+    @title.destroy
+    redirect_to user_path(@title.user.id)
   end
 
   def index
