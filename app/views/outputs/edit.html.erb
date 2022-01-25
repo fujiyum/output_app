@@ -10,6 +10,7 @@
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-5 text-center">
             <%= render 'titles/title', title: @title, user: @user %>
+            <%= link_to "インプット詳細", input_path(@input.id), class:"btn btn-primary btn-sm" %>
         </div>
         <div class="col-sm-12 col-md-10 col-lg-10 mt-5">
             <%= form_with model:@output, local: true do |f| %>
@@ -17,7 +18,7 @@
                 <div class="mt-3"><h5>FEEDBACK</h5><%= f.text_area :feedback, class:"form-control" %></div>
                 <div class="mt-3 text-center"><%= f.submit "更新する", class:"btn btn-success col-sm-12 col-md-6 col-lg-6" %></div>
             <% end %>
-            <div class="mt-3 text-center"><%= link_to "削除", output_path(@output.id), method: :delete, "data-confirm" => "削除しますか？", class:"btn btn-danger col-sm-12 col-md-6 col-lg-6" %></div>
+            <div class="mt-3 text-center"><%= link_to "削除", output_path(@output.id), method: :delete, "data-confirm" => "期限が過ぎている場合再登録できません。本当に削除しますか？", class:"btn btn-danger col-sm-12 col-md-6 col-lg-6" %></div>
         </div>
     </div>
 </div>
