@@ -20,14 +20,17 @@ RSpec.describe Input, type: :model do
     end
 
     describe 'バリデーションのテスト' do
-        subject { input.valid? }
+        context '空白のバリデーションチェック' do
+            it 'inputカラムが空欄でないこと' do
+            input = Input.new(input:'', target:'hoge')
+            expect(input).to be_invalid
+            expect(input.errors[:input]).to include("を入力してください")
+            end
 
-        let!(:input) { create(:input) }
-
-        context 'inputカラム' do
-            it '空欄でないこと' do
-            input.input = ''
-            is_expected.to eq false
+            it 'targetカラムが空欄でないこと' do
+            input = Input.new(input:'hoge', target:'')
+            expect(input).to be_invalid
+            expect(input.errors[:target]).to include("を入力してください")
             end
         end
     end

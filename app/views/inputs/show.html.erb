@@ -68,7 +68,7 @@
                 </div>
             <% end %>
             <div class="col-sm-12 col-md-2 col-sm-2">
-                <% if user_signed_in? && @user.id == current_user.id && @input.limit > Time.current %>
+                <% if new_output_by? %>
                     <%= link_to "OUTPUT3入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2 w-bold w-100 bg-gradient" %>
                 <% end %>
             </div>
@@ -87,13 +87,13 @@
                 </div>
             <% end %>
             <div class="col-sm-12 col-md-2 col-sm-2">
-                <% if user_signed_in? && @user.id == current_user.id && @input.limit > Time.current %>
+                <% if new_output_by? %>
                     <%= link_to "OUTPUT2入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2 w-bold w-100 bg-gradient" %>
                 <% end %>
             </div>
         <% else %>
             <div class="col-sm-12 col-md-10 col-lg-10">
-                <% if user_signed_in? && @user.id == current_user.id && @input.limit > Time.current %>
+                <% if new_output_by? %>
                     <%= link_to "OUTPUT入力", new_output_path(:input_id => @input.id), class:"btn btn-primary mt-2 w-bold w-100 bg-gradient" %>
                 <% end %>
             </div>
