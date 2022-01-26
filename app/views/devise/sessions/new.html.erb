@@ -6,12 +6,12 @@
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
           <div class="field mb-3">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", required:"required" %>
           </div>
 
           <div class="field mb-3">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+            <%= f.password_field :password, autocomplete: "current-password", class:"form-control", required:"required" %>
           </div>
 
           <% if devise_mapping.rememberable? %>

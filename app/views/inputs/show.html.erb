@@ -127,7 +127,7 @@
         <div class="col-8">
             <%= form_with(model:[@input, @comment], local: true) do |f| %>
                 <div class="input-group">
-                <%= f.text_field :comment, rows:'5',placeholder: "コメントをここに", class:"form-control" %>
+                <%= f.text_field :comment, rows:'5',placeholder: "コメントをここに", class:"form-control", required:"required" %>
                 <%= f.button :type => "submit", class:"btn btn-primary input-group-btn" do %>
                  <i class="fas fa-paper-plane"></i>
                 <% end %>

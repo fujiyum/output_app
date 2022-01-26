@@ -52,7 +52,7 @@
            <nav class="navbar navbar-light">
             <div class="form-inline container-fluid">
                 <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-                <%= f.text_field :name, placeholder: "Username", class:"form-control" %>
+                <%= f.text_field :name, placeholder: "Username", class:"form-control", required:"required" %>
                 <%= f.submit :search, class:"btn btn-outline-success" %>
                 <% end %>
             </div>

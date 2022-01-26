@@ -8,12 +8,12 @@
 
         <div class="field mb-3">
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", required:"required" %>
         </div>
 
         <div class="field mb-3">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", required:"required" %>
         </div>
 
         <div class="field mb-3">
@@ -21,12 +21,12 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control", required:"required" %>
         </div>
 
         <div class="field mb-3">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", required:"required" %>
         </div>
 
         <div class="actions mt-2">

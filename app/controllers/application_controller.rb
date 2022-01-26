@@ -3,10 +3,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(_resources)
     if current_user
-      flash[:notice] = 'Welcome Back'
       user_path(current_user.id)
     else
-      flash[:notice] = 'Welcome'
       titles_path
     end
   end

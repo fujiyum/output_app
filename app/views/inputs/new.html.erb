@@ -16,9 +16,9 @@
     </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-5">
         <%= form_with model: @input, local:true do |f| %>
-            <p>インプットしたこと <%= f.text_field :input, class:"form-control" %></p>
+            <p>インプットしたこと <%= f.text_field :input, class:"form-control", required:"required" %></p>
             <p class="text-danger">登録から2週間後の日付が<br />自動でリミットに設定されます。</p>
-            <p>アウトプットできそうな場面 <%= f.text_field :target, class:"form-control" %></p>
+            <p>アウトプットできそうな場面 <%= f.text_field :target, class:"form-control", required:"required" %></p>
             <%= f.hidden_field :title_id, value: @title.id %>
             <%= f.hidden_field :limit, value: Time.current.since(14.days) %>
             <%= f.submit '登録する', class:"btn btn-success d-grid gap-2 col-sm-12 col-md-8 col-lg-8" %>

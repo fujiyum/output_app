@@ -13,7 +13,7 @@ RSpec.describe Input, type: :model do
             end
         end
         context 'Outputモデルとの関係' do
-            it 'N:1となっている' do
+            it '1:Nとなっている' do
                 expect(Input.reflect_on_association(:outputs).macro).to eq :has_many
             end
         end
