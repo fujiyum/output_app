@@ -7,24 +7,26 @@
     <% end %>
 </div>
 <div class="container mb-3">
-  <div class="row d-flex align-items-center justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 mt-5 text-center">
-        <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback:"no_image.jpg", class:"rounded-circle" %>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6 mt-5 text-center">
+            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback:"no_image.jpg", class:"rounded-circle" %>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-6 mt-5">
-        <%= form_with model:@user, local:true do |f| %>
-            <div class="custom-file mb-3">
-                <%= f.attachment_field :profile_image, class:"custom-file-input", id:"customFileLang" %>
-                <%= f.label :profile_image, class:"custom-file-label", for:"customFileLang" %>
-            </div>
-            <div class="mb-3">
-                <%= f.label :name %>
-                <%= f.text_field :name, class:"form-control", placeholder:"Input name", required:"required" %>
-            </div>
-            <div class="mb-3">
-                <%= f.submit "保存", class:"btn btn-success fw-bold w-100 bg-gradient" %>
-            </div>
-        <% end %>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6 mt-5">
+            <%= form_with model:@user, local:true do |f| %>
+                <div class="custom-file mb-3">
+                    <%= f.attachment_field :profile_image, class:"custom-file-input", id:"customFileLang" %>
+                    <%= f.label :profile_image, class:"custom-file-label", for:"customFileLang" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class:"form-control", placeholder:"Input name", required:"required" %>
+                </div>
+                <div class="mb-3">
+                    <%= f.submit "保存", class:"btn btn-success fw-bold w-100 bg-gradient" %>
+                </div>
+            <% end %>
+        </div>
     </div>
-  </div>
 </div>
