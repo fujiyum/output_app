@@ -2,8 +2,10 @@
     <div class="d-flex flex-row align-items-center justify-content-center mt-5">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-8">
-                インプット<span class="h5">「<%= @input.input %>」</span><br />
-                使えそうな場面<span class="h5">「<%= @input.target %>」</span>
+                <ul>
+                    <li>インプット<span class="h5">「<%= @input.input %>」</span></li>
+                    <li>使えそうな場面<span class="h5">「<%= @input.target %>」</span></li>
+                </ul>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
             <% if user_signed_in? && @user.id == current_user.id %>

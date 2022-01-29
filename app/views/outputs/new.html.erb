@@ -8,8 +8,10 @@
 </div>
 <div class="container mb-3">
     <div class="d-flex flex-row align-items-center justify-content-center mt-5">
-        <h6>インプット「<%= @input.input %>」</h6>
-        <h6>使えそうな場面「<%= @input.target %>」</h6>
+        <ul>
+            <li>インプット<span class="h5">「<%= @input.input %>」</span></li>
+            <li>使えそうな場面<span class="h5">「<%= @input.target %>」</span></li>
+        </ul>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-sm-12 col-md-2 col-lg-2 mt-1 text-center">
@@ -22,7 +24,7 @@
             <%= form_with model: @output, local:true do |f| %>
             <%= f.hidden_field :input_id, value: @input.id %>
                 <div>
-                    NEW OUTPUT <%= f.text_field :output, class:"form-control", required:"required" %>
+                    NEW OUTPUT <%= f.text_area :output, class:"form-control", required:"required" %>
                 </div>
                 <div class="mt-3">
                     NEW FEEDBACK <%= f.text_area :feedback, class:"form-control", required:"required" %>
