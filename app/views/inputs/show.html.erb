@@ -1,15 +1,15 @@
 <div class="container mb-3">
     <div class="d-flex flex-row align-items-center justify-content-center mt-5">
-        <div class="h5">
-                インプット「<%= @input.input %>」
-        </div>
-        <div class="h5">
-            使えそうな場面「<%= @input.target %>」
-        </div>
-        <div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                インプット<span class="h5">「<%= @input.input %>」</span><br />
+                使えそうな場面<span class="h5">「<%= @input.target %>」</span>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
             <% if user_signed_in? && @user.id == current_user.id %>
                 <%= link_to "インプットの編集", edit_input_path(@input.id), class:"btn btn-secondary" %>
             <% end %>
+            </div>
         </div>
     </div>
     <div class="row">
