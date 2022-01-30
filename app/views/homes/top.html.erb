@@ -20,44 +20,67 @@
             </div>
         </div>
     </div>
-    <div class="row border">
-        <div class="col-sm-12 col-md-4 col-lg-4 pl-0">
-            <%= image_tag 'books-color(s).jpg', class:"img-fluid h-100" %>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
-            <% if user_signed_in? %>
-            <ul>
-                <li>ヘッダーの[New Title]から学びを登録できます。</li>
-                <li>その後インプットもしくはメモを保存できます。</li>
-                <li>インプットは2週間の期限が自動で設定されます。<br />
-                その期間に3回アウトプットを登録しましょう。</li>
-            </ul>
-            <% else %>
-            <ul>
-                <li>[Sign up]もしくは[Log in]後、機能が使えるようになります。</li>
-                <li>学んだ「タイトル」の登録</li>
-                <li>「インプット」「アウトプット」「メモ」の登録</li>
-                <li>コメント及びナイスボタン</li>
-            </ul>
-            <% end %>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
-            <h4>How many reference books have you read so far?</h4>
+    <div class="row">
+        <div class="col export align-items-center mt-3 px-0">
+            <h2 class="export-title">成長のカギは、アウトプット。</h2>
+
+            <p class="export-text mt-5">あなたが今手にしてる参考書、その本によって何が変わりましたか。<br />
+            本を読んだ直後は、読み終えた達成感と充実を感じます。<br />
+            数日後、その本に書かれていた内容を覚えていますか。<br />
+            いいこと書いてあったと自分の脳内世界で完結していませんか。</p>
+
+            <p>使わないものは捨ててしまいます。<br />
+            それは記憶も一緒です。<br />
+            脳にインプットした情報を使いましょう。<br />
+            脳から現実にアウトプットされた情報は重要度が上がります。<br />
+            大切なことは忘れない。何かあればすぐ使えるあなたの力になります。<br />
+            沢山の情報を知ることも大切ですが、1つ1つ身につけて、<br />
+            現実世界に変化を、あなたの成長を実感していきませんか。</p>
         </div>
     </div>
-    <div class="row bg-secondary">
-        <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center text-white">
-            <h4>How many of those books do you remember?</h4>
+    <div class="row mt-5">
+        <div class="col-sm-6 col-md-6 col-lg-6 px-0">
+            <%= image_tag 'info_title.jpg', class:"img-fluid h-100" %>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center text-white">
-            <ul>
-                <li>インプットされた情報は短期記憶として海馬に保存されます。</li>
-                <li>その期間は約2週間～4週間程度とされています。</li>
-                <li>頻繁に使用する情報は長期記憶として側頭葉に保存されます。</li>
-            </ul>
+        <div class="col-sm-6 col-md-6 col-lg-6 d-flex align-items-center">
+            <h5 class="info-title">ログインしたらヘッダーの"New title"から<br />
+            読んだ本のタイトル、受けた研修の題名などを<br />
+            登録できます。</h5>
         </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 text-right pr-0">
-            <%= image_tag 'books-dark(s).jpg', class:"img-fluid h-100" %>
+    </div>
+    <div class="row mt-3 bg-light">
+        <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
+            <h5 class="info-title"><span class="memo-btn">メモを登録する</span>から<br />
+            大切と思ったことを登録しましょう。<br />
+            本の場合、ページも一緒に登録すると読み返すのに便利です。</h5>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 px-0 mt-2 d-flex align-items-center">
+            <%= image_tag 'info_title_show.jpg', class:"img-fluid" %>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
+            <h5 class="info-title"><span class="text-warning">インプット登録を登録する</span>から<br />
+            実行したい、アウトプットしたい情報をインプットとして登録できます。<br />
+            インプットに登録した情報には<br />アウトプットした内容を登録する機能が付いています。</h5>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="export col-sm-6 col-md-6 col-lg-6 align-items-center mt-3 px-0">
+            <h2 class="export-title">input</h2>
+
+            <p class="export-text mt-5">インプットとは<br />
+            この先覚えておきたい。<br />
+            実際に自分のものにしたいスキル<br />
+            といった自分の成長に必要なことを登録しましょう。</p>
+        </div>
+        <div class="export col-sm-6 col-md-6 col-lg-6 align-items-center mt-3 px-0">
+            <h2 class="export-title">output</h2>
+            <p>アウトプットとは<br />
+            登録したインプットをどれだけ現実世界に発信したか<br />
+            ということを登録できます。<br />
+            また、アウトプットしたら<br />
+            そのことについて良かった点、改善点を登録できます。<br />
+            このインプット→アウトプット→フィードバックを繰り返して<br />
+            自信の物にしていきましょう。</p>
         </div>
     </div>
 </div>
