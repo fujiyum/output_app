@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user,only: [:edit]
 
   def new
     @title = Title.find(params[:title_id])
@@ -52,4 +53,14 @@ class NotesController < ApplicationController
   def note_params
     params.require(:note).permit(:title_id, :note)
   end
+
+  def correct_user
+      note = Note.find(params[:id])
+      title = note.title
+      user = title.user
+    if current_user != user
+      redirect_to root_path
+    end
+  end
+
 end

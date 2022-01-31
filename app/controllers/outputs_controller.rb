@@ -1,5 +1,7 @@
 class OutputsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user_new, only: [:new]
+  before_action :correct_user_edit, only: [:edit]
 
   def new
     @input = Input.find(params[:input_id])
@@ -50,4 +52,24 @@ class OutputsController < ApplicationController
   def output_params
     params.require(:output).permit(:input_id, :output, :feedback)
   end
+
+  def correct_user_new
+      input = Input.find(params[:input_id])
+      title = input.title
+      user = title.user
+    if current_user != user
+      redirect_to root_path
+    end
+  end
+
+  def correct_user_edit
+      output = Output.find(params[:id])
+      input = output.input
+      title = input.title
+      user = title.user
+    if current_user != user
+      redirect_to root_path
+    end
+  end
+
 end

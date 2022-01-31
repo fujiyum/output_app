@@ -1,5 +1,7 @@
 class InputsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  before_action :correct_user_new ,only: [:new]
+  before_action :correct_user_edit, only: [:edit]
 
   def new
     @title = Title.find(params[:title_id])
@@ -55,4 +57,22 @@ class InputsController < ApplicationController
   def input_params
     params.require(:input).permit(:title_id, :input, :target, :limit, :is_vaild)
   end
+
+  def correct_user_new
+      title = Title.find(params[:title_id])
+      user = title.user
+    if current_user != user
+      redirect_to root_path
+    end
+  end
+
+  def correct_user_edit
+      input = Input.find(params[:id])
+      title = input.title
+      user = title.user
+    if current_user != user
+      redirect_to root_path
+    end
+  end
+
 end
