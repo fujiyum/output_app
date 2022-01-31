@@ -38,6 +38,11 @@
             現実世界に変化を、あなたの成長を実感していきませんか。</p>
         </div>
     </div>
+    <div class="row d-flex align-items-center mt-5">
+        <div class="col">
+            <h2 class="info-title">How to   <i class="fas fa-angle-double-down"></i></h5>
+        </div>
+    </div>
     <div class="row mt-5">
         <div class="col-sm-6 col-md-6 col-lg-6 px-0">
             <%= image_tag 'info_title.jpg', class:"img-fluid h-100" %>
@@ -51,16 +56,15 @@
     <div class="row mt-3 bg-light">
         <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
             <h5 class="info-title"><span class="memo-btn">メモを登録する</span>から<br />
-            大切と思ったことを登録しましょう。<br />
-            本の場合、ページも一緒に登録すると読み返すのに便利です。</h5>
+            本の１文や研修のメモなどノートのように登録できます。</h5>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 px-0 mt-2 d-flex align-items-center">
             <%= image_tag 'info_title_show.jpg', class:"img-fluid" %>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
             <h5 class="info-title"><span class="text-warning">インプット登録を登録する</span>から<br />
-            実行したい、アウトプットしたい情報をインプットとして登録できます。<br />
-            インプットに登録した情報には<br />アウトプットした内容を登録する機能が付いています。</h5>
+            タイトルより得た学びを実行するために<br />
+            インプットとして登録できます。</h5>
         </div>
     </div>
     <div class="row mt-0">
@@ -73,13 +77,47 @@
             といった自分の成長に必要なことを<br />
             登録しましょう。</p>
         </div>
-        <div class="export col-sm-6 col-md-6 col-lg-6 px-0">
+        <div class="export col-sm-6 col-md-6 col-lg-6 px-0 border">
             <h2 class="export-title">output</h2>
 
             <p class="export-text mt-5">アウトプットとは<br />
             登録したインプットをどれだけ<br />
             現実世界に発信したか<br />
             ということを登録できます。</p>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-6 col-md-6 col-lg-6 d-flex align-items-center">
+            <h5 class="info-title">登録したinputから<br />
+            現実世界にoutputしたことを<br />
+            登録できる画面に移行します。</h5>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 px-0">
+            <%= image_tag 'input_index.jpg', class:"img-fluid h-100" %>
+        </div>
+    </div>
+    <div class="row bg-light py-5">
+        <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
+            <h5 class="info-title"><span class="text-danger">14日のカウントダウンタイマー</span><br />
+            短期記憶として海馬に保存されている情報の時間です。</h5>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 px-0 d-flex align-items-center">
+            <%= image_tag 'input_show.jpg', class:"img-fluid" %>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-center">
+            <h5 class="info-title"><span class="text-danger">短期記憶から長期記憶</span><br />
+            14日の内に3回outputすると情報の重要度が上がり<br />
+            海馬から側頭葉に長期記憶として保存されます。</h5>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-sm-6 col-md-6 col-lg-6 px-0">
+            <%= image_tag 'input_show_finish.jpg', class:"img-fluid h-100" %>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 d-flex align-items-center">
+            <h5 class="info-title">You acquired this input!<br />
+            14日以内に3回outputを登録できると表示されます。<br />
+            Let's output 3times !</h5>
         </div>
     </div>
 </div>
