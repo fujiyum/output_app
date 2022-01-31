@@ -42,18 +42,6 @@
  color: red;
 }
 
-h1 {
-  @include font-size(4rem);
-}
-
-h3 {
-  @include font-size(2rem);
-}
-
-h6 {
-  @include font-size(0.9rem);
-}
-
 footer {
   height: 100px;
 }
