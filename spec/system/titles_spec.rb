@@ -11,14 +11,16 @@ describe 'タイトル機能', type: :system do
       fill_in 'user[password]', with: login_user.password
       click_button 'Log in'
     end
+    
+    shared_examples_for 'ユーザーが作成したタイトルが表示される' do
+      it { expect(page).to have_content '最初のタイトル' }
+    end
 
     describe '一覧表示機能' do
       context 'ユーザーAがログインしているとき' do
         let(:login_user) {user_a}
 
-        it 'ユーザーが作成したタイトルが表示される' do
-            expect(page).to have_content '最初のタイトル'
-        end
+        it_behaves_like 'ユーザーが作成したタイトルが表示される'
       end
 
       context 'ユーザーBがログインしているとき' do
@@ -38,9 +40,7 @@ describe 'タイトル機能', type: :system do
           visit title_path(title_a)
         end
 
-        it 'ユーザーAが作成したタイトルが表示される' do
-          expect(page).to have_content '最初のタイトル'
-        end
+        it_behaves_like 'ユーザーが作成したタイトルが表示される'
       end
     end
 
