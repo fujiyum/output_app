@@ -3,10 +3,9 @@
         <div class="col mt-5 mr-3 text-center">
             <%= attachment_image_tag @user, :profile_image, size: "100x100", format:'jpeg', fallback:"no_image.jpg", class:"rounded-circle" %>
             <h5><%= @user.name %></h5>
-            <% if user_signed_in? %>
-                <% if @user.id == current_user.id %>
-                    <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-secondary" %>
-                <% end %>
+            <h5 class="mt-3"><%= @user.introduction %></h5>
+            <% if user_signed_in? && @user.id == current_user.id %>
+                <span class="mt-3"><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-secondary" %></span>
             <% end %>
         </div>
     </div>
