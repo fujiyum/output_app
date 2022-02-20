@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_143521) do
+ActiveRecord::Schema.define(version: 2022_02_20_144521) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "input_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_143521) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "google_books_api_id"
   end
 
   create_table "users", force: :cascade do |t|
