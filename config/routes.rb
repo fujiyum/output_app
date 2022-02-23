@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update] do
     get :search, on: :collection
   end
-  resources :titles do
+  resources :titles, shallow: true do
+    collection do
+      get :search
+    end
     resource :nices, only: %i[create destroy]
   end
   resources :inputs, only: %i[new create index show edit update] do

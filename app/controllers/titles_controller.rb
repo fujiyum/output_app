@@ -2,17 +2,18 @@ class TitlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :correct_user, only: [:edit]
 
-  def new
-    @title = Title.new
+  def search
+    @search_form = SearchBooksForm.new(search_books_params)
+    titles = GoogleBook.search(@search_form.keyword)
+    @titles = Kaminari.paginate_array(titles).page(params[:page])
   end
 
   def create
-    @title = Title.new(title_params)
-    @title.user_id = current_user.id
-    if @title.save
+    google_book = GoogleBook.new_from_id(create_book_params[:googlebooksapi_id])
+    if (@title = google_book.find_book_or_save)
       redirect_to title_path(@title.id)
     else
-      render :new
+      redirect_to search_titles_path, danger: 'ページの表示に失敗しました'
     end
   end
 
@@ -43,10 +44,15 @@ class TitlesController < ApplicationController
     @titles = Title.page(params[:page]).reverse_order
   end
 
+
   private
 
-  def title_params
-    params.require(:title).permit(:user_id, :title_name, :image)
+  def create_book_params
+    params.permit(:googlebooksapi_id)
+  end
+
+  def search_books_params
+    params.fetch(:q, keyword: '').permit(:keyword)
   end
 
   def correct_user

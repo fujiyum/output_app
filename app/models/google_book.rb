@@ -3,23 +3,23 @@ class GoogleBook
     include ActiveModel::Attributes
     include ActiveModel::Validations
 
-    attribute :googlebooksapi_id, string
-    attribute :image, string
-    attribute :title, string
+    attribute :googlebooksapi_id, :string
+    attribute :image_id, :string
+    attribute :title_name, :string
 
     validates :googlebooksapi_id, presence: true
-    validates :title, presence: true
+    validates :title_name, presence: true
 
     class << self
-        include GoogleBookApi
+        include GoogleBooksApi
 
         def new_from_item(item)
             @item = item
             @volume_info = @item['volumeInfo']
             new(
                 googlebooksapi_id: @item['id'],
-                image: image_url,
-                title: @volume_info['title'],
+                image_id: image_url,
+                title_name: @volume_info['title'],
                 )
         end
 
@@ -50,24 +50,19 @@ class GoogleBook
     def save
         return false unless valid?
 
-        booK = build_book
-        return false unless book.valid?
+        title = build_title
+        return false unless title.valid?
 
         ActiveRecord::Base.transaction do
-            book.remote_image_url = image if image.present?
-            book.save
-            authors.each.with_index do |author, index|
-                author = book.authors.build(name: author)
-                author.is_representation = index.zero?
-                author.save
-            end
+            title.remote_image_url = image if image.present?
+            title.save
         end
         true
     end
 
   def find_book_or_save
-    if Book.find_by(googlebooksapi_id: googlebooksapi_id) || save
-      Book.find_by(googlebooksapi_id: googlebooksapi_id)
+    if Title.find_by(googlebooksapi_id: googlebooksapi_id) || save
+      Title.find_by(googlebooksapi_id: googlebooksapi_id)
     else
       false
     end
@@ -76,10 +71,10 @@ class GoogleBook
   private
 
   def build_book
-    Book.new(
+    Title.new(
       googlebooksapi_id: googlebooksapi_id,
       published_at: published_at,
-      title: title,
+      title_name: title,
     )
   end
 
