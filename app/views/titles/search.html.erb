@@ -1,12 +1,3 @@
-<div class="error_message text-center mt-3">
-    <%# if @title.errors.any? %>
-      <%#= @title.errors.count %>件のエラーが発生しました
-      <%# @title.errors.full_messages.each do |message| %>
-        <%#= message %>
-      <%# end %>
-    <%# end %>
-</div>
-
 <div class="container">
     <div class="row text-center mb-3">
         <div class="col">
@@ -20,21 +11,12 @@
                 <%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword %>
                 <%= f.submit '検索 '%>
             <% end %>
-
-
-            <%#= form_with model: @title, local:true do |f| %>
-                <#div class="custom-file mb-3">
-                    <%#= f.label :title_image, class:"custom-file-label" %>
-                    <%#= f.attachment_field :image, class:"custom-file-input", placeholder:"title name", id:"customFileLang" %>
-                <#/div>
-                <#div class="mb-3">
-                    <%#= f.label :title %>
-                    <%#= f.text_field :title_name, class:"form-control", placeholder:"title name", required:"required" %>
-                <#/div>
-                <#div class="mb-3">
-                    <%#= f.submit "保存", class:"btn btn-success fw-bold w-100 bg-gradient" %>
-                <#/div>
-            <%# end %>
         </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+        <%= @titles.each do |title| %>
+            <%= title.image_id %>
+            <%= title.title_name %>
+        <% end %>
     </div>
 </div>
