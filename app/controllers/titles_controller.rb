@@ -2,10 +2,24 @@ class TitlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :correct_user, only: [:edit]
 
-  def search
-    @search_form = SearchBooksForm.new(search_books_params)
-    titles = GoogleBook.search(@search_form.keyword)
-    @titles = Kaminari.paginate_array(titles).page(params[:page])
+  def new
+    @title = Title.new
+    if params[:keyword].present?
+      require 'net/http'
+      url = 'https://www.googlebooksapis.com/books/v1/volumes?q='
+      request = url + params[:keyword]
+      enc_str = URI.encode(request)
+      uri = URI.parse(enc_str)
+      json = Net::HTTP.get(uri)
+      @bookjson = JSON.parse(json)
+      
+      count = 5
+      @title = Array.new(count).map{Array.new(4)}
+      count.times do |x|
+        @titles[x][0] = @bookjson.dig("items", x, "volumeInfo", "title")
+        @titles[x][1] = @bookjson.dig("items", x, "volumeInfo", "imageLinks", "thumbnail")
+      end
+    end
   end
 
   def create

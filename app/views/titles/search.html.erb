@@ -15,8 +15,7 @@
     </div>
     <div class="row d-flex align-items-center justify-content-center">
         <%= @titles.each do |title| %>
-            <%= title.image_id %>
-            <%= title.title_name %>
+            <%= title["items"][i]["volumeInfo"]["title"] %>
         <% end %>
     </div>
 </div>
